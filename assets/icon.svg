@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Cruzando el Charco</title>
+  <rect width="512" height="512" rx="112" fill="#082b3a"/>
+  <path d="M78 292c53-88 112-123 178-104 66 19 111-5 178-88" fill="none" stroke="#f8c14b" stroke-width="34" stroke-linecap="round"/>
+  <path d="M78 366c75-52 135-58 181-20 48 39 107 29 175-31" fill="none" stroke="#ef6658" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="92" cy="292" r="24" fill="#79d8c2"/>
+  <circle cx="426" cy="101" r="24" fill="#79d8c2"/>
+</svg>

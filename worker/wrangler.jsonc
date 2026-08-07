@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cruzando-el-charco-agents",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-01",
+  "secrets": {
+    "required": ["GROQ_API_KEY", "ALLOWED_ORIGIN"]
+  },
+  "ratelimits": [
+    {
+      "name": "AGENT_RATE_LIMIT",
+      "namespace_id": 42017,
+      "simple": {
+        "limit": 30,
+        "period": 60
+      }
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.1
+  }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="day">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guía multilingüe LGTBIQ+ para personas migrantes en Barcelona y Sitges: apoyo, salud, derechos, cultura, ocio y comunidad.">
+  <meta name="theme-color" content="#082b3a">
+  <meta name="color-scheme" content="light dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://*.workers.dev; media-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <title>Cruzando el Charco · Barcelona + Sitges</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+  <aside class="utility-bar" aria-label="Controles de accesibilidad y privacidad">
+    <button class="quick-exit" id="quick-exit" type="button" data-i18n="quickExit">Salida rápida</button>
+    <div class="utility-actions">
+      <label class="language-control">
+        <span class="sr-only" data-i18n="language">Idioma</span>
+        <select id="language-select" aria-label="Idioma">
+          <option value="es">ES · Español</option>
+          <option value="ca">CA · Català</option>
+          <option value="en">EN · English</option>
+          <option value="it">IT · Italiano</option>
+          <option value="fr">FR · Français</option>
+          <option value="de">DE · Deutsch</option>
+          <option value="pt">PT · Português</option>
+          <option value="zh">中文</option>
+          <option value="ur">اردو</option>
+          <option value="ar">العربية</option>
+          <option value="fi">FI · Suomi</option>
+        </select>
+      </label>
+      <button class="icon-button" id="listen-button" type="button" aria-label="Escuchar esta página" aria-pressed="false">
+        <span aria-hidden="true">◖))</span><span data-i18n="listen">Escuchar esta página</span>
+      </button>
+      <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar entre modo día y noche" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">◐</span><span data-i18n="theme">Cambiar tema</span>
+      </button>
+    </div>
+  </aside>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Cruzando el Charco, inicio">
+      <svg viewBox="0 0 76 50" aria-hidden="true"><path d="M4 31C18 8 32 6 44 20s18 10 28-12"/><path d="M4 44c18-12 31-10 40 0 8 8 17 5 28-4"/></svg>
+      <span><strong>CRUZANDO</strong><small>el charco</small></span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span data-i18n="menu">Abrir menú</span><span aria-hidden="true">＋</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+      <a href="#urgente">Urgente</a>
+      <a href="#ruta">Llegar</a>
+      <a href="#directorio">Directorio</a>
+      <a href="#planes">Planes</a>
+      <a href="#cultura">Cultura</a>
+      <a href="#agentes">Orientación</a>
+      <a href="#noticias">Noticias</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" data-i18n="eyebrow">Barcelona + Sitges · guía LGTBIQ+ migrante</p>
+        <h1 id="hero-title" data-i18n="heroTitle">Llegar. Orientarse. Encontrar tribu.</h1>
+        <p class="hero-intro" data-i18n="heroText">Información práctica, cultura y apoyo para cruzar fronteras sin dejarte atrás. Sin cuenta, sin rastreo y con fuentes visibles.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#urgente" data-i18n="startNow">Necesito ayuda ahora</a>
+          <a class="button button-ghost" href="#directorio" data-i18n="explore">Explorar la guía</a>
+        </div>
+        <p class="status-line"><span class="status-dot" aria-hidden="true"></span><span data-i18n="status">Información revisada el 7 de agosto de 2026</span></p>
+      </div>
+
+      <div class="signal-console reveal">
+        <div class="console-top"><span>CECH/BCN–SITGES</span><span>11 LANG</span><span>NO TRACK</span></div>
+        <svg class="signal-map" viewBox="0 0 620 420" role="img" aria-labelledby="map-title map-desc">
+          <title id="map-title">Red de apoyo Cruzando el Charco</title>
+          <desc id="map-desc">Una línea conecta llegada, derechos, salud, comunidad, cultura y futuro.</desc>
+          <path class="map-water" d="M-20 72C82 4 148 112 240 58s174-43 244 8 106-27 160-13"/>
+          <path class="map-water map-water-alt" d="M-20 338c103-62 171 40 267-24s179-25 237 16 109-34 160-18"/>
+          <path class="map-route" d="M70 300C102 222 164 249 202 184s91-89 145-44 89 35 119-24 61-33 87-8"/>
+          <g class="map-node" transform="translate(70 300)"><circle r="18"/><text y="42">LLEGAR</text></g>
+          <g class="map-node" transform="translate(202 184)"><circle r="18"/><text x="-20" y="42">DERECHOS</text></g>
+          <g class="map-node" transform="translate(347 140)"><circle r="18"/><text x="-15" y="42">SALUD</text></g>
+          <g class="map-node" transform="translate(466 116)"><circle r="18"/><text x="-38" y="42">COMUNIDAD</text></g>
+          <g class="map-node map-node-hot" transform="translate(553 108)"><circle r="22"/><text x="-20" y="48">FUTURO</text></g>
+        </svg>
+        <div class="console-readout"><span>SEÑAL ABIERTA</span><strong id="console-clock">BCN 00:00</strong></div>
+      </div>
+    </section>
+
+    <section class="emergency section" id="urgente" aria-labelledby="emergency-title">
+      <div class="section-heading reveal">
+        <p class="section-number">01 · AHORA</p>
+        <h2 id="emergency-title" data-i18n="emergencyTitle">Si hay peligro, empieza aquí</h2>
+        <p data-i18n="emergencyText">Tu seguridad va primero. Elige el canal adecuado y comparte solo lo necesario.</p>
+      </div>
+      <div class="emergency-grid" id="emergency-grid"></div>
+      <details class="privacy-note reveal">
+        <summary data-i18n="privacyTitle">Privacidad práctica</summary>
+        <p data-i18n="privacyText">La web no pide cuenta, ubicación, identidad ni historial médico. La salida rápida cambia de página, pero no borra el historial del navegador.</p>
+      </details>
+    </section>
+
+    <section class="route section" id="ruta" aria-labelledby="route-title">
+      <div class="section-heading reveal">
+        <p class="section-number">02 · BRÚJULA</p>
+        <h2 id="route-title" data-i18n="routeTitle">Tu ruta de llegada</h2>
+        <p data-i18n="routeText">Pasos cortos para las primeras 72 horas, el primer mes y después.</p>
+      </div>
+      <ol class="route-line" id="route-list"></ol>
+      <div class="truth-strip reveal">
+        <strong>Regla de oro</strong>
+        <p>Las citas públicas no se venden. Conserva copias de tus documentos. Firma únicamente lo que entiendas. Ante dudas de extranjería, busca orientación jurídica especializada.</p>
+      </div>
+    </section>
+
+    <section class="needs section" aria-labelledby="needs-title">
+      <div class="section-heading reveal">
+        <p class="section-number">03 · VIDA REAL</p>
+        <h2 id="needs-title">Diez áreas que sostienen una llegada</h2>
+        <p>Una guía útil conecta necesidades: un documento sin vivienda o una fiesta sin transporte seguro no forman un plan completo.</p>
+      </div>
+      <div class="needs-grid">
+        <article><b>01</b><h3>Urgencias</h3><p>Peligro, salud, crisis emocional y salida segura.</p></article>
+        <article><b>02</b><h3>Papeles</h3><p>Empadronamiento, asilo, arraigo y orientación.</p></article>
+        <article><b>03</b><h3>Salud</h3><p>CAP, salud sexual, PrEP/PEP, ITS y atención trans.</p></article>
+        <article><b>04</b><h3>Vivienda</h3><p>Urgencia, mediación, ayudas y prevención de estafas.</p></article>
+        <article><b>05</b><h3>Trabajo</h3><p>Derechos, formación, homologación y búsqueda.</p></article>
+        <article><b>06</b><h3>Comida</h3><p>Valoración social y redes de apoyo de barrio.</p></article>
+        <article><b>07</b><h3>Bienestar</h3><p>Escucha, salud mental, duelo migratorio y red.</p></article>
+        <article><b>08</b><h3>Juventud</h3><p>Información y acompañamiento adecuados a la edad.</p></article>
+        <article><b>09</b><h3>Comunidad</h3><p>Grupos, asociaciones, amistad y familia elegida.</p></article>
+        <article><b>10</b><h3>Cultura y ocio</h3><p>Bibliotecas, cine, mar, noche y placer con cabeza.</p></article>
+      </div>
+    </section>
+
+    <section class="directory section" id="directorio" aria-labelledby="directory-title">
+      <div class="section-heading reveal">
+        <p class="section-number">04 · MAPA HUMANO</p>
+        <h2 id="directory-title" data-i18n="directoryTitle">Directorio vivo</h2>
+        <p data-i18n="directoryText">Servicios, comunidad, salud, cultura, ocio y vida cotidiana. Filtra sin entregar datos personales.</p>
+      </div>
+      <div class="filter-panel reveal" role="search" aria-label="Filtros del directorio">
+        <label class="search-field"><span class="sr-only" data-i18n="search">Buscar por nombre, necesidad o barrio</span><input id="directory-search" type="search" autocomplete="off" data-i18n-placeholder="search" placeholder="Buscar por nombre, necesidad o barrio"></label>
+        <div class="filter-row" id="category-filters" role="group" aria-label="Categoría"></div>
+        <div class="select-row">
+          <label>Zona<select id="area-filter"><option value="all">Todas</option><option>Barcelona</option><option>Sitges</option><option>Catalunya</option><option>España</option><option>Online</option></select></label>
+          <label>Coste<select id="cost-filter"><option value="all">Todos</option><option value="gratis">Gratis</option><option value="publico">Público</option><option value="mixto">Mixto</option><option value="pago">Pago</option><option value="consultar">Consultar</option></select></label>
+          <label class="adult-filter"><input id="adult-filter" type="checkbox"> Mostrar ocio solo +18</label>
+        </div>
+      </div>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="resource-grid" id="resource-grid"></div>
+      <p class="empty-state" id="empty-state" hidden data-i18n="noResults">No hay resultados con esos filtros.</p>
+      <p class="source-warning"><span data-i18n="verify">Comprueba horario y condiciones antes de ir.</span> Los directorios nunca sustituyen la web o teléfono oficial.</p>
+    </section>
+
+    <section class="fun-zone section" id="planes" aria-labelledby="fun-title">
+      <div class="section-heading reveal">
+        <p class="section-number">05 · HOY PINTA</p>
+        <h2 id="fun-title" data-i18n="funTitle">¿Qué hacemos hoy?</h2>
+        <p data-i18n="funText">Monta un plan según ánimo, presupuesto y momento. Nada de formularios eternos.</p>
+      </div>
+      <div class="plan-machine reveal">
+        <form id="plan-form">
+          <fieldset><legend>¿Qué cuerpo tienes hoy?</legend><div class="chip-options">
+            <label><input type="radio" name="mood" value="tranqui" checked><span>Tranqui</span></label>
+            <label><input type="radio" name="mood" value="gente"><span>Quiero gente</span></label>
+            <label><input type="radio" name="mood" value="cultura"><span>Cultura</span></label>
+            <label><input type="radio" name="mood" value="mar"><span>Mar</span></label>
+            <label><input type="radio" name="mood" value="fiesta"><span>Fiesta</span></label>
+            <label><input type="radio" name="mood" value="aventura"><span>Aventura</span></label>
+          </div></fieldset>
+          <div class="plan-selects">
+            <label>Presupuesto<select name="budget"><option value="gratis">Cero o casi</option><option value="bajo">Bajo</option><option value="medio">Medio</option></select></label>
+            <label>Momento<select name="time"><option value="dia">De día</option><option value="noche">De noche</option><option value="casa">Desde casa</option></select></label>
+            <label>Zona<select name="area"><option>Barcelona</option><option>Sitges</option><option>Online</option></select></label>
+          </div>
+          <button class="button button-primary" type="submit" data-i18n="buildPlan">Crear mi plan</button>
+        </form>
+        <div class="plan-output" id="plan-output" aria-live="polite">
+          <span class="plan-stamp">PLAN / 00</span><h3>Tu ruta aparecerá aquí</h3><p>Elige tres cosas y pulsa el botón. Sin GPS, sin perfil y sin guardar tus respuestas.</p>
+        </div>
+      </div>
+      <aside class="night-note reveal" aria-label="Consejos de seguridad nocturna"><strong>De noche, colega:</strong> acuerda la vuelta, vigila tu bebida, pregunta precios antes, respeta todos los límites y pide ayuda al personal si algo no cuadra. Consentimiento claro o nada.</aside>
+    </section>
+
+    <section class="city-stories section" aria-labelledby="cities-title">
+      <div class="section-heading reveal">
+        <p class="section-number">06 · DOS ORILLAS</p>
+        <h2 id="cities-title">Barcelona y Sitges, sin folleto vacío</h2>
+        <p>Dos escenas distintas. Ninguna representa a toda la comunidad y ninguna necesita reducirse a la noche.</p>
+      </div>
+      <div class="story-grid">
+        <article class="city-card city-barcelona reveal">
+          <img src="assets/images/barcelona-pride.jpg" alt="Multitud celebrando el Orgullo en una calle de Barcelona" width="1200" height="800" loading="lazy">
+          <div><p class="eyebrow">BARCELONA</p><h3>Barrio, derechos y mezcla</h3><p>Empieza por Sant Antoni y el Centre LGTBI; conecta con asociaciones y agenda pública. El Gaixample es una capa, no el mapa entero: hay comunidad, cultura y cuidados por toda la ciudad.</p><a href="https://ajuntament.barcelona.cat/lgtbi/es" rel="noopener noreferrer">Agenda oficial</a></div>
+        </article>
+        <article class="city-card city-sitges reveal">
+          <img src="assets/images/sitges-pride.jpg" alt="Celebración del Orgullo en Sitges junto a la costa" width="1200" height="800" loading="lazy">
+          <div><p class="eyebrow">SITGES</p><h3>Mar, patrimonio y comunidad</h3><p>Ve más allá de la postal: museos, playas urbanas accesibles, asociaciones y conversación. Algunas calas tienen acceso exigente y no cuentan con socorrismo; planifica agua, calzado y regreso.</p><a href="https://www.sitgesanytime.com/en/explore/made-for-you/theme6" rel="noopener noreferrer">Guía oficial</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="culture section" id="cultura" aria-labelledby="culture-title">
+      <div class="section-heading reveal">
+        <p class="section-number">07 · RADAR CULTURAL</p>
+        <h2 id="culture-title" data-i18n="cultureTitle">Ver, leer, escuchar</h2>
+        <p data-i18n="cultureText">Selección crítica y acceso legal: bibliotecas, préstamo digital, cine público y voces de la comunidad.</p>
+      </div>
+      <div class="culture-list" id="culture-list"></div>
+      <div class="legal-download-note reveal"><strong>Descargas con cariño y derechos.</strong><p>Solo enlazamos préstamo, streaming oficial, dominio público o descargas autorizadas. “Está online” no significa “se puede copiar”.</p></div>
+    </section>
+
+    <section class="radio section" aria-labelledby="radio-title">
+      <div class="radio-shell reveal">
+        <div class="radio-circuit" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="radio-header"><p class="section-number">08 · ONDA ABIERTA</p><span class="radio-led" id="radio-led"></span></div>
+        <h2 id="radio-title" data-i18n="radioTitle">Radio Circuito Charco</h2>
+        <p data-i18n="radioText">Señales de cultura y comunidad. Tú decides cuándo suena.</p>
+        <div class="radio-display" id="radio-display"><span>CH-00</span><strong>SILENCIO ACTIVO</strong><small>sin reproducción automática</small></div>
+        <div class="radio-controls">
+          <button class="button button-primary" id="radio-toggle" type="button" aria-pressed="false" data-i18n="radioOn">Encender señal</button>
+          <input id="radio-volume" type="range" min="0" max="100" value="22" aria-label="Volumen de la señal">
+        </div>
+        <div class="station-grid">
+          <a href="https://www.rtve.es/play/audios/plurals-i-singulars-a-radio-4/" rel="noopener noreferrer"><b>R4</b><span>Plurals i singulars</span></a>
+          <a href="https://dublab.es/" rel="noopener noreferrer"><b>DL</b><span>Dublab Barcelona</span></a>
+          <a href="https://colorssitgeslink.org/" rel="noopener noreferrer"><b>CS</b><span>Colors Sitges Link</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="agents section" id="agentes" aria-labelledby="agents-title">
+      <div class="section-heading reveal">
+        <p class="section-number">09 · MESA ABIERTA</p>
+        <h2 id="agents-title" data-i18n="agentsTitle">Mesa de orientación</h2>
+        <p data-i18n="agentsText">Personalidades distintas, límites claros. El modo local usa esta guía; la IA externa solo funciona si el proyecto conecta un backend privado.</p>
+      </div>
+      <div class="agent-layout">
+        <div class="agent-tabs" id="agent-tabs" role="tablist" aria-label="Elige una persona orientadora"></div>
+        <div class="agent-console reveal">
+          <div class="agent-intro" id="agent-intro"></div>
+          <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-label="Conversación" tabindex="0"></div>
+          <form class="agent-form" id="agent-form">
+            <label class="sr-only" for="agent-question" data-i18n="ask">Escribe una pregunta</label>
+            <textarea id="agent-question" rows="3" maxlength="800" data-i18n-placeholder="ask" placeholder="Escribe una pregunta" required></textarea>
+            <button class="button button-primary" type="submit" data-i18n="send">Preguntar</button>
+          </form>
+          <p class="agent-privacy">Modo local por defecto. No escribas nombres completos, números de documento, diagnósticos ni direcciones privadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="news section" id="noticias" aria-labelledby="news-title">
+      <div class="section-heading reveal">
+        <p class="section-number">10 · ARCHIVO VIVO</p>
+        <h2 id="news-title" data-i18n="newsTitle">Noticias con memoria</h2>
+        <p data-i18n="newsText">Las novedades se actualizan desde fuentes comunitarias; el archivo conserva lo publicado y muestra procedencia y fecha.</p>
+      </div>
+      <div class="news-meta reveal"><span id="news-status">Cargando archivo…</span><button class="text-button" id="news-refresh" type="button">Actualizar vista</button></div>
+      <div class="news-grid" id="news-grid"></div>
+      <noscript><p>Activa JavaScript para consultar el archivo dinámico. Los servicios y teléfonos esenciales siguen visibles arriba.</p></noscript>
+    </section>
+
+    <section class="before-you-go section" aria-labelledby="before-title">
+      <div class="section-heading reveal">
+        <p class="section-number">11 · ANTES DE MOVERTE</p>
+        <h2 id="before-title">Cinco comprobaciones que ahorran disgustos</h2>
+      </div>
+      <div class="check-grid">
+        <article><span>01</span><h3>Fuente</h3><p>¿La información viene del organismo o entidad que presta el servicio?</p></article>
+        <article><span>02</span><h3>Fecha</h3><p>¿Cuándo se revisó? Horarios, trámites y locales cambian.</p></article>
+        <article><span>03</span><h3>Coste</h3><p>Confirma precio, gratuidad y requisitos. No pagues por citas públicas.</p></article>
+        <article><span>04</span><h3>Privacidad</h3><p>Comparte el mínimo. Una captura puede contener nombres o ubicación.</p></article>
+        <article><span>05</span><h3>Plan B</h3><p>Transporte, batería, contacto y alternativa si el lugar está cerrado.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand brand-footer" href="#top"><strong>CRUZANDO</strong><small>el charco</small></a>
+      <p data-i18n="footer">Una herramienta comunitaria, no una autoridad. Verifica decisiones legales, sanitarias y de seguridad con profesionales.</p>
+      <nav aria-label="Información del proyecto">
+        <a href="legal.html" data-i18n="legal">Aviso legal y privacidad</a>
+        <a href="README.md">Cómo funciona</a>
+        <a href="CREDITS.md">Créditos y licencias</a>
+        <a href="SECURITY.md">Seguridad</a>
+      </nav>
+    </div>
+    <div class="signature"><span>Concepto y dirección</span><strong>Pedro Belentani · @belentani</strong><span>NOIACORE.com · ejecutor de ideas</span></div>
+    <p class="offline-hint"><span aria-hidden="true">●</span> <span data-i18n="offline">Disponible sin conexión tras la primera visita</span></p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/vendor/CustomEase.min.js" defer></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="assets/config.js" defer></script>
+  <script src="assets/content.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

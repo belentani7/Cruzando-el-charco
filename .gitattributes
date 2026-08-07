@@ -1,0 +1,3 @@
+* text=auto
+assets/vendor/*.min.js binary
+assets/images/*.jpg binary

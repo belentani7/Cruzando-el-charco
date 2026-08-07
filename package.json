@@ -1,0 +1,25 @@
+{
+  "name": "cruzando-el-charco",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Guía comunitaria, multilingüe y accesible para personas LGTBIQ+ migrantes en Barcelona y Sitges.",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "html:validate": "html-validate index.html legal.html 404.html",
+    "links:check": "node scripts/check-links.mjs",
+    "browser:audit": "node scripts/browser-audit.mjs",
+    "build": "node scripts/build-pages.mjs",
+    "news:update": "node scripts/update-news.mjs",
+    "serve": "npx --yes serve@14.2.4 .",
+    "test": "npm run check && npm run html:validate && npm run browser:audit"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "axe-core": "^4.13.0",
+    "html-validate": "^11.6.2"
+  }
+}

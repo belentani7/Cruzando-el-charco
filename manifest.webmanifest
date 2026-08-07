@@ -1,0 +1,19 @@
+{
+  "name": "Cruzando el Charco",
+  "short_name": "El Charco",
+  "description": "Guía LGTBIQ+ migrante para Barcelona y Sitges.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1eadc",
+  "theme_color": "#082b3a",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

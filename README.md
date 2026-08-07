@@ -1,86 +1,80 @@
-ℹ️ About · Cruzando el Charco
-Cruzando el Charco (bridging-worlds-guide.lovable.app) es un proyecto comunitario, independiente y sin ánimo de lucro concebido como un puente de acogida, supervivencia y arraigo para hombres migrantes LGBT+.
+# Cruzando el Charco
 
-Nace desde la realidad metropolitana de L'Hospitalet de Llobregat (Pubilla Cases, Can Vidalet) y Barcelona para ofrecer una respuesta directa, práctica y sin paternalismos a quienes cruzan fronteras cargando mochilas invisibles.
+Guía comunitaria, multilingüe y accesible para personas LGTBIQ+ migrantes, visitantes y residentes de Barcelona y Sitges.
+Última auditoría local: 13 de agosto de 2026.
 
-🧭 ¿Por qué existe este espacio?
-Migrar siendo parte del colectivo LGBT+ implica atravesar múltiples capas de vulnerabilidad: el duelo por lo dejado atrás, la reconfiguración de la identidad lejos de casa, la barrera del idioma, los laberintos burocráticos de la extranjería y el miedo constante al rechazo o la desinformación.
+## Qué contiene
 
-Este portal existe para recortar distancias entre el laberinto administrativo y la vida real. No vende falsas promesas ni atajos mágicos; recopila y ordena lo que funciona, lo que es gratis y lo que está respaldado por la red pública y el tejido asociativo real.
+- Teléfonos y rutas de urgencia visibles sin JavaScript.
+- 32 recursos revisados de derechos, extranjería, salud, vivienda, trabajo, juventud, comunidad, cultura y ocio.
+- 11 idiomas de navegación crítica: español, catalán, inglés, italiano, francés, alemán, portugués, chino, urdu, árabe y finés.
+- Modo día/noche persistente, lectura en voz alta, salida rápida y soporte de movimiento reducido.
+- Generador privado de planes, sin GPS, cuenta ni formulario remoto.
+- Radio visual tipo circuito sin reproducción automática; la señal ambiente solo arranca tras acción del usuario.
+- Seis orientadores locales con límites explícitos y backend IA privado opcional.
+- Noticias RSS acumulativas: las entradas se deduplican y actualizan, pero el archivo conserva el histórico.
+- PWA para consulta sin conexión después de la primera visita.
 
-🛠️ Principios y Criterios del Proyecto
-Radicalmente Práctico: Información directa al grano. Pasos numerados, direcciones verificadas, documentos necesarios y cero relleno retórico.
+## Arquitectura
 
-Privacidad Absoluta: Ningún dato personal del usuario es recolectado ni almacenado. Los agentes de IA integrados y las guías operan bajo una política estricta de anonimato y confidencialidad.
+La publicación es estática y funciona en GitHub Pages. `assets/content.js` concentra textos y directorio; `assets/app.js` contiene la interfaz, filtros y orientadores locales; `scripts/update-news.mjs` mantiene el archivo RSS; `worker/` documenta la integración IA opcional sin exponer claves al navegador.
 
-Enfoque de Derechos: La defensa implacable de que los derechos básicos (salud, empadronamiento, seguridad, dignidad laboral y afectiva) son universales, independientemente de la situación administrativa.
+Los chats, TAR, HTML de investigación y el antiguo repositorio no forman parte de esta carpeta publicable. Esa separación evita subir material interno y material sensible que ya no debe mezclarse con el sitio público.
 
-Cero Estafas: Prevención activa contra los falsos gestores y cobros indebidos por trámites que son gratuitos en las instituciones y sindicatos colaboradores.
+## Ejecutar y verificar
 
-📌 Autoría
-Creado por: Pedro Belentani — @Belentani_
+```powershell
+npm test
+python -m http.server 8080
+```
 
-Visión y Arte: Conectado con ecosistemas creativos y de desarrollo open-source (judas-experience).
+Abre `http://127.0.0.1:8080`. No abras `index.html` con doble clic si quieres comprobar service worker, noticias y modo sin conexión.
 
-Aviso legal básico: Cruzando el Charco es una guía de orientación comunitaria e informativa. No sustituye el asesoramiento jurídico formal de un abogado colegiado de extranjería ni el diagnóstico de un profesional sanitario. Ante situaciones críticas o de emergencia institucional, acude siempre a los canales oficiales verificados.
+Actualizar noticias manualmente:
 
-# Cruzando-el-charco 
-Cruzando el Charco, impulsado por noiacore.com y creado por Pedro Belentani, es un portal gratuito y confidencial de acogida, supervivencia y arraigo para hombres migrantes LGBT+ en L'Hospitalet y Barcelona. Información directa y práctica sobre papeles, salud, vivienda y comunidad.
+```powershell
+npm run news:update
+npm test
+```
 
-🇧🇷 Português
-ℹ️ Sobre · Cruzando el Charco
-Cruzando el Charco, impulsionado por noiacore.com e criado por Pedro Belentani, é um portal comunitário, independente e gratuito concebido como uma ponte de acolhimento, sobrevivência e inserção para homens migrantes LGBT+ em L'Hospitalet de Llobregat e Barcelona.
+## Publicar en GitHub Pages
 
-Ele nasce da realidade metropolitana de Pubilla Cases e Can Vidalet para oferecer uma resposta direta, prática e sem paternalismos àqueles que cruzam fronteiras carregando mochilas invisíveis.
+1. Crea un repositorio vacío.
+2. Ejecuta dentro de esta carpeta:
 
-🧭 Por que este espaço existe?
-Migrar fazendo parte da comunidade LGBT+ significa atravessar múltiplas camadas de vulnerabilidade: o luto pelo que ficou para trás, a reconfiguração da identidade longe de casa, a barreira do idioma, os labirintos burocráticos da imigração e o medo constante de rejeição ou desinformação.
+```powershell
+git init -b main
+git add .
+git commit -m "feat: launch Cruzando el Charco community guide"
+git remote add origin URL_DE_TU_REPOSITORIO
+git push -u origin main
+```
 
-Este portal existe para encurtar distâncias entre o labirinto administrativo e a vida real. Não vende falsas promessas nem atalhos mágicos; compila e organiza o que funciona, o que é gratuito e o que é respaldado pela rede pública e pelo tecido associativo real.
+3. En GitHub: **Settings > Pages > Source > GitHub Actions**.
+4. La acción `Quality` valida estructura, seguridad editorial y enlaces; `Deploy GitHub Pages` publica tras superar los controles; `Update community news archive` corre dos veces al día y conserva el histórico.
 
-🛠️ Princípios e Critérios do Projeto
+## Decisiones de seguridad
 
-Radicalmente Prático: Informação direta ao ponto. Passos numerados, endereços verificados, documentos necessários e zero enrolação.
+- Sin analítica, anuncios, cookies no esenciales, geolocalización, formularios de identidad ni fuentes remotas.
+- Content Security Policy restrictiva y scripts de animación alojados en el repositorio.
+- Enlaces externos aislados con `noopener noreferrer`.
+- La versión local de los agentes no envía preguntas.
+- Las claves se guardan como secretos del Worker, nunca en GitHub o JavaScript público.
+- El frontend público puede leerse: minificarlo no lo protege. La protección real usa licencia, historial Git, secretos fuera del cliente y lógica sensible en servidor.
 
-Privacidade Absoluta: Nenhum dado pessoal do usuário é coletado ou armazenado.
+## Criterio editorial
 
-Foco em Direitos: A defesa implacável de que os direitos básicos (saúde, registro municipal/padrón, segurança, dignidade trabalhista e afetiva) são universais, independentemente da situação administrativa.
+Las fuentes oficiales y los prestadores directos tienen prioridad. Un recurso muestra la fecha de revisión, pero el usuario debe confirmar horarios, precio, acceso y condiciones. Los contenidos +18 permanecen ocultos hasta activarlos. Películas y libros enlazan catálogos, préstamo o distribución legal.
 
-Zero Golpes: Prevenção ativa contra falsos intermediários e cobranças indevidas por trâmites que são gratuitos nas instituições e sindicatos parceiros.
+Documentación de mantenimiento:
 
-📌 Autoria
+- [Revisión del corpus original](docs/SOURCE-REVIEW.md)
+- [Estado real de traducciones](docs/TRANSLATION-STATUS.md)
+- [Estrategia de ampliación](docs/EXPANSION-STRATEGY.md)
+- [Lista de lanzamiento](docs/LAUNCH-CHECKLIST.md)
 
-Criado por: Pedro Belentani — @Belentani_
+## Autoría
 
-Ecossistema mãe: noiacore.com
+Concepto y dirección: Pedro Belentani · @belentani · NOIACORE.com · ejecutor de ideas.
 
-Aviso legal básico: O Cruzando el Charco é um guia de orientação comunitária e informativa. Não substitui a assessoria jurídica formal de um advogado de imigração nem o diagnóstico de um profissional de saúde.
-
-🇬🇧 English
-ℹ️ About · Cruzando el Charco
-Cruzando el Charco, powered by noiacore.com and created by Pedro Belentani, is a community-driven, independent, and free portal designed as a bridge of welcome, survival, and integration for LGBT+ migrant men in L'Hospitalet de Llobregat and Barcelona.
-
-It stems from the metropolitan reality of Pubilla Cases and Can Vidalet to offer a direct, practical, and unpaternalistic response to those crossing borders carrying invisible backpacks.
-
-🧭 Why does this space exist?
-Migrating as part of the LGBT+ community means navigating multiple layers of vulnerability: grief for what was left behind, the reconfiguration of identity far from home, language barriers, bureaucratic immigration mazes, and the constant fear of rejection or misinformation.
-
-This portal exists to bridge the gap between administrative labyrinths and real life. It sells no false promises or magic shortcuts; it compiles and organizes what works, what is free, and what is backed by public networks and real community organizations.
-
-🛠️ Project Principles & Criteria
-
-Radically Practical: Straight-to-the-point information. Numbered steps, verified addresses, required documents, and zero fluff.
-
-Absolute Privacy: No personal user data is collected or stored.
-
-Rights-Based Focus: The unwavering defense that basic rights (healthcare, municipal registration/padrón, safety, labor, and emotional dignity) are universal, regardless of administrative status.
-
-Zero Scams: Active prevention against fake agents charging for procedures that are free through official institutions and partner unions.
-
-📌 Authorship
-
-Created by: Pedro Belentani — @Belentani_
-
-Parent Ecosystem: noiacore.com
-
-Basic legal notice: Cruzando el Charco is an informative community guidance guide. It does not replace formal legal advice from an immigration lawyer or medical diagnosis from a healthcare professional.
+Código: MIT. Texto editorial original: CC BY 4.0. Fotografías y marcas: licencias de sus titulares; consulta [CREDITS.md](CREDITS.md).

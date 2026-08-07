@@ -1,0 +1,40 @@
+name: Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Validate structure, security rules and content
+        run: npm test
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check public links
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: >-
+            --no-progress
+            --accept 200,204,206,301,302,403,429
+            --exclude '^tel:'
+            --exclude 'https://dublab.es/'
+            --exclude '^https://www\.sitgesanytime\.com/'
+            './**/*.html' './**/*.md' './assets/content.js'
+          fail: true
