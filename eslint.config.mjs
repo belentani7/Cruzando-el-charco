@@ -15,7 +15,7 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/prefer-as-const": "off",
     "@typescript-eslint/no-unused-disable-directive": "off",
-    
+
     // React rules
     "react-hooks/exhaustive-deps": "off",
     "react-hooks/purity": "off",

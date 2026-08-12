@@ -625,4 +625,3 @@ export function getLanguage(code: string): Language {
   return languages.find(l => l.code === code) || languages[0];
 }
 
-
