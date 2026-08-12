@@ -4,51 +4,55 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { CustomEase } from "gsap/CustomEase";
 import { personas, type Persona } from "@/lib/personas";
-import { ArrowLeft, Send, Shield } from "lucide-react";
+import { ArrowLeft, Send, Shield, Trash2 } from "lucide-react";
+
+gsap.registerPlugin(useGSAP, CustomEase);
+CustomEase.create("charco-chat", "0.16, 1, 0.3, 1");
 
 interface Message {
   role: "user" | "assistant";
   content: string;
 }
 
+const quickPrompts: Record<string, string[]> = {
+  abogado: ["¿Qué pasos tiene el arraigo?", "¿Dónde encuentro asesoría gratuita?", "¿Qué documentos preparo?"],
+  medico: ["¿Cómo solicito la TSI?", "¿Dónde está mi CAP?", "Necesito atención urgente"],
+  psicologo: ["Necesito apoyo emocional", "¿Cómo pido cita en el CAP?", "¿Qué hago en una crisis?"],
+  vivienda: ["¿Cómo detectar una estafa?", "¿Qué derechos tiene un inquilino?", "Busco una habitación"],
+};
+
 export default function ChatPage() {
   const params = useParams();
   const agenteId = params?.agente as string;
   const persona: Persona | undefined = personas[agenteId];
 
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(() => persona ? [
+    {
+      role: "assistant",
+      content: `Hola, soy ${persona.name}. ${persona.description}. ¿En qué puedo ayudarte hoy?`,
+    },
+  ] : []);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    if (persona) {
-      setMessages([
-        {
-          role: "assistant",
-          content: `Hola, soy ${persona.name}. ${persona.description}. ¿En qué puedo ayudarte hoy?`,
-        },
-      ]);
-    }
-  }, [persona]);
+  const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".chat-container", {
+  useGSAP(() => {
+      gsap.from(chatRef.current, {
         y: 20,
         opacity: 0,
         duration: 0.6,
-        ease: "power3.out",
+        ease: "charco-chat",
       });
-    });
-    return () => ctx.revert();
-  }, []);
+  }, { scope: chatRef });
 
   const handleSend = async () => {
     if (!input.trim() || loading || !persona) return;
@@ -65,13 +69,12 @@ export default function ChatPage() {
         body: JSON.stringify({
           message: userMessage,
           personaId: persona.id,
-          systemPrompt: persona.systemPrompt,
         }),
       });
 
       const data = await res.json();
 
-      if (data.reply) {
+      if (res.ok && data.reply) {
         setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]);
       } else {
         setMessages((prev) => [
@@ -116,7 +119,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="chat-container pt-20 pb-4 px-4 flex flex-col h-screen max-w-3xl mx-auto">
+    <div ref={chatRef} className="chat-container pt-20 pb-4 px-4 flex flex-col h-screen max-w-3xl mx-auto">
       {/* Header */}
       <div className="glass rounded-xl p-4 mb-4 flex items-center gap-3 flex-shrink-0">
         <Link
@@ -134,6 +137,14 @@ export default function ChatPage() {
           className="w-3 h-3 rounded-full animate-pulse"
           style={{ backgroundColor: persona.color }}
         />
+        <button
+          type="button"
+          onClick={() => setMessages([])}
+          className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+          aria-label="Borrar conversación de esta sesión"
+        >
+          <Trash2 className="w-4 h-4" />
+        </button>
       </div>
 
       {/* Quick exit warning */}
@@ -145,7 +156,7 @@ export default function ChatPage() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-1">
+      <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-1" role="log" aria-live="polite" data-lenis-prevent>
         {messages.map((msg, i) => (
           <div
             key={i}
@@ -188,7 +199,19 @@ export default function ChatPage() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input */}
+      <div className="flex flex-wrap gap-2 mb-3" aria-label="Preguntas rápidas">
+        {(quickPrompts[persona.id] ?? ["¿Por dónde empiezo?", "¿Qué recurso oficial necesito?", "Necesito ayuda hoy"]).map((prompt) => (
+          <button
+            type="button"
+            key={prompt}
+            onClick={() => setInput(prompt)}
+            className="glass rounded-full px-3 py-1.5 text-xs text-muted-foreground hover:text-neon-cyan transition-colors"
+          >
+            {prompt}
+          </button>
+        ))}
+      </div>
+
       <div className="glass rounded-xl p-3 flex-shrink-0">
         <div className="flex items-end gap-2">
           <textarea
@@ -202,19 +225,21 @@ export default function ChatPage() {
               }
             }}
             placeholder={`Escribe tu mensaje para ${persona.name}...`}
+            aria-label={`Mensaje para ${persona.name}`}
             className="flex-1 bg-transparent border-0 outline-none resize-none text-sm text-foreground placeholder:text-muted-foreground/50 min-h-[40px] max-h-[120px] py-1"
             rows={1}
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || loading}
+            aria-label="Enviar mensaje"
             className="p-2 rounded-lg bg-neon-cyan text-background disabled:opacity-30 disabled:cursor-not-allowed hover:scale-105 transition-transform flex-shrink-0"
           >
             <Send className="w-4 h-4" />
           </button>
         </div>
         <p className="text-[10px] text-muted-foreground/50 mt-1.5 px-1">
-          IA orientativa, no sustituye asesoría profesional. En emergencias: 112.
+          Sesión temporal. No escribas datos identificativos. La IA orienta y no sustituye asesoría profesional. Emergencias: 112.
         </p>
       </div>
     </div>

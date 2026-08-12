@@ -4,28 +4,30 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: {
     default: "Cruzando el Charco — Apoyo para Personas Migrantes LGBT+",
     template: "%s — Cruzando el Charco",
   },
   description:
-    "Guía integral, segura y confidencial para personas migrantes LGTBI+ en Barcelona y L'Hospitalet. Salud, trámites, arraigo y apoyo comunitario sin juicio.",
+    "Guía comunitaria para personas migrantes LGTBI+ en Barcelona y L'Hospitalet. Salud, trámites, arraigo y apoyo sin juicio.",
   authors: [{ name: "Cruzando el Charco" }],
   creator: "Cruzando el Charco",
-  metadataBase: new URL("https://puente-y-apoyo.lovable.app"),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
     locale: "es_ES",
     siteName: "Cruzando el Charco",
     title: "Cruzando el Charco — Apoyo para Personas Migrantes LGBT+",
     description:
-      "Guía integral, segura y confidencial para personas migrantes LGTBI+ en Barcelona y L'Hospitalet.",
+      "Guía comunitaria para personas migrantes LGTBI+ en Barcelona y L'Hospitalet.",
     images: [
       {
-        url: "/og-image.webp",
-        width: 1200,
-        height: 630,
+        url: "/hero-community.png",
+        width: 1024,
+        height: 1024,
         alt: "Cruzando el Charco",
       },
     ],
@@ -34,15 +36,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cruzando el Charco",
     description:
-      "Guía integral, segura y confidencial para personas migrantes LGTBI+.",
-    images: ["/og-image.webp"],
+      "Guía comunitaria para personas migrantes LGTBI+.",
+    images: ["/hero-community.png"],
   },
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: "https://puente-y-apoyo.lovable.app",
+    canonical: siteUrl,
   },
 };
 
@@ -70,9 +72,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Cruzando el Charco",
-              url: "https://puente-y-apoyo.lovable.app",
+              url: siteUrl,
               description:
-                "Guía integral, segura y confidencial para personas migrantes LGTBI+ en Barcelona y L'Hospitalet.",
+                "Guía comunitaria para personas migrantes LGTBI+ en Barcelona y L'Hospitalet.",
               sameAs: [],
               contactPoint: {
                 "@type": "ContactPoint",

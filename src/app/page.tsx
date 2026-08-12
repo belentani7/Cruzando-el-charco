@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { CustomEase } from "gsap/CustomEase";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
@@ -18,6 +21,10 @@ import { articles } from "@/data/articles";
 import { resources } from "@/data/resources";
 import { events } from "@/data/events";
 import { languages } from "@/data/languages";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
+CustomEase.create("charco-reveal", "0.16, 1, 0.3, 1");
+CustomEase.create("charco-float", "0.45, 0, 0.55, 1");
 
 const validationPhrases = [
   "Tu existencia es válida",
@@ -47,17 +54,14 @@ const focusCards = [
 ];
 
 export default function HomePage() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const phrasesRef = useRef<HTMLDivElement>(null);
-  const agentsRef = useRef<HTMLDivElement>(null);
-  const articlesRef = useRef<HTMLDivElement>(null);
+  const pageRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  useGSAP(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
-    const ctx = gsap.context(() => {
-      // Hero entrance timeline
-      const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const heroTl = gsap.timeline({ defaults: { ease: "charco-reveal" } });
 
       heroTl
         .from(".hero-badge", { y: 20, opacity: 0, duration: 0.6 })
@@ -72,20 +76,19 @@ export default function HomePage() {
           duration: 0.5,
         }, "-=0.6");
 
-      // Validation phrases floating animation
-      gsap.utils.toArray(".validation-phrase").forEach((el, i) => {
-        gsap.fromTo(el,
-          { y: 0 },
-          {
-            y: -8,
-            duration: 2 + i * 0.3,
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true,
-            delay: i * 0.4,
-          }
-        );
-      });
+    gsap.utils.toArray<HTMLElement>(".validation-phrase").forEach((el, i) => {
+      gsap.fromTo(el,
+        { y: 0 },
+        {
+          y: -8,
+          duration: 2 + i * 0.3,
+          ease: "charco-float",
+          repeat: -1,
+          yoyo: true,
+          delay: i * 0.4,
+        }
+      );
+    });
 
       // Agent cards batch reveal
       ScrollTrigger.batch(".agent-card", {
@@ -96,11 +99,11 @@ export default function HomePage() {
             opacity: 0,
             stagger: 0.08,
             duration: 0.6,
-            ease: "power2.out",
+            ease: "charco-reveal",
           }),
+        once: true,
       });
 
-      // Articles section parallax
       gsap.from(".articles-header", {
         y: 30,
         opacity: 0,
@@ -112,7 +115,6 @@ export default function HomePage() {
         },
       });
 
-      // Article cards stagger
       ScrollTrigger.batch(".article-card", {
         start: "top 85%",
         onEnter: (batch) =>
@@ -121,11 +123,11 @@ export default function HomePage() {
             opacity: 0,
             stagger: 0.06,
             duration: 0.5,
-            ease: "power2.out",
+            ease: "charco-reveal",
           }),
+        once: true,
       });
 
-      // Quick exit CTA section
       gsap.from(".exit-section", {
         y: 40,
         opacity: 0,
@@ -136,7 +138,6 @@ export default function HomePage() {
           once: true,
         },
       });
-      });
 
       ScrollTrigger.batch(".focus-card", {
         start: "top 85%",
@@ -146,24 +147,23 @@ export default function HomePage() {
             opacity: 0,
             stagger: 0.08,
             duration: 0.5,
-            ease: "power2.out",
+            ease: "charco-reveal",
           }),
+        once: true,
       });
-
-      return () => ctx.revert();
-  }, []);
+  }, { scope: pageRef });
 
   return (
-    <div className="relative">
+    <div ref={pageRef} className="relative">
       {/* ── Hero Section ── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center px-4 pt-20">
+      <section className="relative min-h-screen flex items-center px-4 pt-20">
         <div className="mx-auto max-w-7xl w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Text */}
             <div className="space-y-6">
               <div className="hero-badge inline-flex items-center gap-2 glass-mag px-4 py-2 rounded-full text-xs font-mono text-neon-magenta uppercase tracking-wider">
                 <Shield className="w-3 h-3" />
-                Seguro · Confidencial · Sin juicio · Sin registro
+                Sin cuenta · Sin juicio · Salida rápida
               </div>
 
               <h1 className="hero-title font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
@@ -181,7 +181,7 @@ export default function HomePage() {
 
               <p className="hero-subtitle text-muted-foreground text-lg max-w-lg leading-relaxed">
                 Portal comunitario para personas migrantes LGBT+ en Barcelona y L&apos;Hospitalet.
-                Trámites, salud, vivienda, comunidad y agentes IA que hablan tu idioma.
+                Trámites, salud, vivienda, comunidad y guías IA orientativas en tu idioma.
               </p>
 
               <div className="hero-cta flex flex-wrap gap-4">
@@ -190,7 +190,7 @@ export default function HomePage() {
                   className="inline-flex items-center gap-2 bg-neon-cyan text-background px-6 py-3 rounded-xl font-display font-bold text-sm hover:scale-105 transition-transform"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  Hablar con la abogada IA
+                  Abrir la guía de extranjería
                 </Link>
                 <Link
                   href="/articulos"
@@ -212,13 +212,13 @@ export default function HomePage() {
             {/* Right: Image + Language bubbles */}
             <div className="relative hero-image">
               <div className="relative rounded-2xl overflow-hidden neon-border">
-                <img
-                  src="https://storage.googleapis.com/gpt-engineer-file-uploads/VWWvBb1Of5YUBCR0nL9VKNX8n493/social-images/social-1780766766061-hero-community.webp"
+                <Image
+                  src="/hero-community.png"
                   alt="Comunidad diversa"
                   width={1024}
                   height={1024}
-                  fetchPriority="high"
-                  decoding="async"
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="w-full h-auto object-cover aspect-square"
                 />
               </div>
@@ -243,7 +243,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Validation Phrases ── */}
-      <section ref={phrasesRef} className="py-16 px-4 overflow-hidden">
+      <section className="py-16 px-4 overflow-hidden">
         <div className="mx-auto max-w-5xl">
           <div className="mb-6 flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">
             <Languages className="w-4 h-4 text-neon-cyan" />
@@ -280,11 +280,11 @@ export default function HomePage() {
       </section>
 
       {/* ── Agent Grid ── */}
-      <section ref={agentsRef} className="py-20 px-4">
+      <section className="py-20 px-4">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              <span className="neon-text">14 profesionales</span> de IA
+              <span className="neon-text">14 guías</span> orientativas
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Cada uno especializado en un área de tu vida. Hablan tu idioma, conocen tu realidad
@@ -384,7 +384,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Latest Articles ── */}
-      <section ref={articlesRef} className="py-20 px-4">
+      <section className="py-20 px-4">
         <div className="mx-auto max-w-7xl">
           <div className="articles-header flex items-center justify-between mb-8">
             <div>

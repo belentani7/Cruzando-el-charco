@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { personas } from "@/lib/personas";
 
 const chatSchema = z.object({
   message: z.string().min(1).max(2000),
   personaId: z.string().min(1).max(50),
-  systemPrompt: z.string().min(1).max(5000),
 });
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -28,7 +28,8 @@ function checkRateLimit(ip: string): boolean {
 
 export async function POST(request: Request) {
   try {
-    const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown";
+    const forwardedFor = request.headers.get("x-forwarded-for");
+    const ip = forwardedFor?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown";
 
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
@@ -47,7 +48,12 @@ export async function POST(request: Request) {
       );
     }
 
-    const { message, systemPrompt } = parsed.data;
+    const { message, personaId } = parsed.data;
+    const persona = personas[personaId];
+
+    if (!persona) {
+      return NextResponse.json({ error: "Agente no encontrado." }, { status: 404 });
+    }
 
     const apiKey = process.env.AI_API_KEY;
     const apiBase = process.env.AI_API_BASE || "https://api.deepseek.com";
@@ -71,11 +77,10 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         model,
         messages: [
-          { role: "system", content: systemPrompt },
+          { role: "system", content: persona.systemPrompt },
           { role: "user", content: message },
         ],
         max_tokens: 500,
-        temperature: 0.7,
       }),
     });
 
