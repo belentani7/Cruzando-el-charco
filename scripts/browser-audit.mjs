@@ -26,7 +26,12 @@ const server = createServer(async (request, response) => {
 });
 await new Promise((resolve) => server.listen(4173, "127.0.0.1", resolve));
 
-const launchOptions = process.platform === "win32" ? { channel: "msedge", headless: true } : { headless: true };
+const chromiumPath = process.env.CHROMIUM_PATH ?? (process.platform === "linux" ? "/usr/bin/chromium" : undefined);
+const launchOptions = chromiumPath
+  ? { executablePath: chromiumPath, headless: true }
+  : process.platform === "win32"
+    ? { channel: "msedge", headless: true }
+    : { headless: true };
 const browser = await chromium.launch(launchOptions);
 const errors = [];
 
