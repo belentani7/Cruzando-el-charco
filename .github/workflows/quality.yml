@@ -37,5 +37,6 @@ jobs:
             --exclude 'https://dublab.es/'
             --exclude '^https://www\.sitgesanytime\.com/'
             --exclude 'https://www\.bcncheckpoint\.com/'
+            --exclude 'https://proteccion-asilo\.interior\.gob\.es/'
             './**/*.html' './**/*.md' './assets/content.js'
           fail: true
