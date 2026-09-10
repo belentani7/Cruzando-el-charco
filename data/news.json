@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-10T09:42:34.948Z",
+  "updated": "2026-09-10T19:40:57.422Z",
   "total": 22,
   "sources": [
     "ACATHI",
@@ -8,7 +8,8 @@
     "Colors Sitges Link"
   ],
   "failures": [
-    "ACATHI: ACATHI: HTTP 500"
+    "ACATHI: ACATHI: HTTP 500",
+    "Colors Sitges Link: fetch failed"
   ],
   "items": [
     {
@@ -17,7 +18,7 @@
       "description": "The post “¡Andalucía libre, igualitaria y orgullosa!”: Sevilla alza su voz por los derechos LGTBIQ+ frente a los discursos de odio appeared first on ONG Stop .",
       "url": "https://stopsida.org/2026/07/20/andalucia-libre-igualitaria-y-orgullosa-sevilla-alza-su-voz-por-los-derechos-lgtbiq-frente-a-los-discursos-de-odio",
       "date": "2026-07-20",
-      "discovered": "2026-09-10T09:42:30.800Z",
+      "discovered": "2026-09-10T19:40:49.338Z",
       "score": 14,
       "id": "82b7e9bdcd730d249b40"
     },
@@ -227,7 +228,7 @@
       "description": "En el marco de la próxima conmemoración del 1 de diciembre, Día Mundial de Lucha contra el Sida, la asociación comunitaria Stop Sida nos invita al diálogo sobre las diferentes estrategias de prevención, a través de su nueva campaña “Crea tus propias estrategias de prevención” #DecidamosInformados. Para promover este diálogo, Stop Sida nos ofrecerá, además,… The post Stop Sida lanza la campaña “Crea tus propias estrategias de prevención” #DecidamosInformados appeared first on ONG Stop .",
       "url": "https://stopsida.org/2018/11/20/prevencion-combinada-decidamosinformados",
       "date": "2018-11-20",
-      "discovered": "2026-09-10T09:42:30.801Z",
+      "discovered": "2026-09-10T19:40:49.338Z",
       "score": 7,
       "id": "35a987e8f5cdfef36f58"
     }
