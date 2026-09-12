@@ -14,6 +14,7 @@ function json(body, status, origin) {
     headers: {
       "content-type": "application/json; charset=utf-8",
       "cache-control": "no-store",
+      vary: "Origin",
       "access-control-allow-origin": origin,
       "access-control-allow-methods": "POST, OPTIONS",
       "access-control-allow-headers": "content-type",
