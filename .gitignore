@@ -10,3 +10,12 @@ dist/
 playwright-report/
 test-results/
 *.log
+
+# remediacion 2026-09-14
+node_modules/
+.env
+.env.*
+.mimosa/
+__pycache__/
+.vercel/
+*.log
