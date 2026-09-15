@@ -1,0 +1,61 @@
+{
+  "tema": "contexto-demografico-ue",
+  "portal": "cruzando-el-charco",
+  "registros": [
+    {
+      "fuente": "Eurostat",
+      "spec": "eurostat_demo",
+      "ok": true,
+      "datos": [
+        {
+          "pais": "European Union - 27 countries (from 2020)",
+          "codigo": "EU27_2020"
+        },
+        {
+          "pais": "European Union - 28 countries (2013-2020)",
+          "codigo": "EU28"
+        },
+        {
+          "pais": "European Union - 27 countries (2007-2013)",
+          "codigo": "EU27_2007"
+        },
+        {
+          "pais": "Euro area – 21 countries (from 2026)",
+          "codigo": "EA21"
+        },
+        {
+          "pais": "Euro area – 20 countries (2023-2025)",
+          "codigo": "EA20"
+        },
+        {
+          "pais": "Euro area - 19 countries  (2015-2022)",
+          "codigo": "EA19"
+        },
+        {
+          "pais": "Belgium",
+          "codigo": "BE"
+        },
+        {
+          "pais": "Bulgaria",
+          "codigo": "BG"
+        },
+        {
+          "pais": "Czechia",
+          "codigo": "CZ"
+        },
+        {
+          "pais": "Denmark",
+          "codigo": "DK"
+        },
+        {
+          "pais": "Germany",
+          "codigo": "DE"
+        },
+        {
+          "pais": "Germany including former GDR",
+          "codigo": "DE_TOT"
+        }
+      ]
+    }
+  ]
+}

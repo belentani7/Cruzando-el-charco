@@ -1,0 +1,70 @@
+{
+  "tema": "comunidad-y-cultura",
+  "portal": "cruzando-el-charco",
+  "registros": [
+    {
+      "fuente": "Wikipedia ES",
+      "spec": "mediawiki:es.wikipedia.org:diversidad sexual",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": "Diversidad sexual",
+          "url": "https://es.wikipedia.org/wiki/Diversidad_sexual",
+          "fragmento": "diversidad sexual y de género o diversidad sexogenérica (DSG)​ es un término inclusivo que abarca toda la variedad de sexos, orientaciones sexuales e"
+        },
+        {
+          "titulo": "Plaza de la Diversidad Sexual",
+          "url": "https://es.wikipedia.org/wiki/Plaza_de_la_Diversidad_Sexual",
+          "fragmento": "La Plaza de la Diversidad Sexual de Montevideo está situada en el barrio Ciudad Vieja, al final del pasaje Policía Vieja entre las calles Sarandí y Bartolomé"
+        },
+        {
+          "titulo": "Red Paraguaya de la Diversidad Sexual",
+          "url": "https://es.wikipedia.org/wiki/Red_Paraguaya_de_la_Diversidad_Sexual",
+          "fragmento": "La Red Paraguaya de la Diversidad Sexual (REPADIS) es una organización civil creada en 2012 con el fin de trabajar en la defensa y promoción de los derechos"
+        },
+        {
+          "titulo": "Diversidad sexual en Ecuador",
+          "url": "https://es.wikipedia.org/wiki/Diversidad_sexual_en_Ecuador",
+          "fragmento": "América Latina en incluir preguntas relacionadas con la orientación sexual y diversidad de género.​ Los resultados arrojaron que 270 970 personas se identificaban"
+        },
+        {
+          "titulo": "Diversidad sexual en Europa",
+          "url": "https://es.wikipedia.org/wiki/Diversidad_sexual_en_Europa",
+          "fragmento": "La diversidad sexual en Europa ha sido considerada de diferentes maneras a lo largo de la historia. Aunque actualmente es aceptada con relativa normalidad"
+        }
+      ]
+    },
+    {
+      "fuente": "Wikilibros ES",
+      "spec": "mediawiki:es.wikibooks.org:salud",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": "GNU Health/Sistema de Gestión Hospitalaria/Centro de Salud",
+          "url": "https://es.wikibooks.org/wiki/GNU_Health%2FSistema_de_Gesti%C3%B3n_Hospitalaria%2FCentro_de_Salud",
+          "fragmento": "Centro de Salud es el núcleo de GNU Health. Está formado por los distintos edificios: Centros: Son las entidades de agrupación del Centro de Salud, en este"
+        },
+        {
+          "titulo": "Impactos ambientales/Salud y seguridad pública",
+          "url": "https://es.wikibooks.org/wiki/Impactos_ambientales%2FSalud_y_seguridad_p%C3%BAblica",
+          "fragmento": "El Banco Mundial carece de una política formal para la salud y seguridad pública. La política general al respecto es mencionada principalmente en las"
+        },
+        {
+          "titulo": "GNU Health/El Sistema Libre de Gestión Hospitalaria y Salud",
+          "url": "https://es.wikibooks.org/wiki/GNU_Health%2FEl_Sistema_Libre_de_Gesti%C3%B3n_Hospitalaria_y_Salud",
+          "fragmento": "Sistema Libre de Gestión Hospitalaria y Salud  Esta página contiene todo el texto del capítulo de «El Sistema Libre de Gestión Hospitalaria y Salud»"
+        },
+        {
+          "titulo": "La psiquis en el proceso salud-enfermedad",
+          "url": "https://es.wikibooks.org/wiki/La_psiquis_en_el_proceso_salud-enfermedad",
+          "fragmento": "La Psiquis en el Proceso Salud-Enfermedad. Este Wikilibro tiene como fin el interpretar el papel de la psiquis en la salud y conducta del hombre, así"
+        },
+        {
+          "titulo": "GNU Health/El Sistema Libre de Gestión Hospitalaria y Salud/Prefacio",
+          "url": "https://es.wikibooks.org/wiki/GNU_Health%2FEl_Sistema_Libre_de_Gesti%C3%B3n_Hospitalaria_y_Salud%2FPrefacio",
+          "fragmento": "Más allá de los grandes avances en tecnología de la salud, miles de niños morirán hoy de enfermedades prevenibles. Enfermedades infecciosas como la malaria"
+        }
+      ]
+    }
+  ]
+}

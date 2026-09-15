@@ -1,0 +1,106 @@
+{
+  "tema": "vivienda-y-empleo",
+  "portal": "cruzando-el-charco",
+  "registros": [
+    {
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:vivienda",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": [
+            {
+              "_value": "Número de viviendas según tamaño en municipio, distritos y secciones",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/l01281317-numero-de-viviendas-segun-tamano-en-municipio-distritos-y-secciones",
+          "descripcion": "Datos del Censo de Población y Viviendas que recogen el número de viviendas en San Lorenzo de El Escorial clasificadas según su tamaño (superficie útil), desagr"
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Antigüedad de la vivienda según superficie en municipio, distritos y secciones",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/l01281317-antiguedad-de-la-vivienda-segun-superficie-en-municipio-distritos-y-secciones",
+          "descripcion": "Datos sobre la antigüedad de las viviendas en San Lorenzo de El Escorial, clasificados según superficie y desagregados por municipio, distritos y secciones cens"
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Edificios, superficie y viviendas según tipo de obra. Municipios de Aragón",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a02002834-edificios-superficie-y-viviendas-segun-tipo-de-obra-municipios-de-aragon",
+          "descripcion": "Explotación, elaboración y difusión de los datos para Aragón de las licencias municipales para la construcción de edificios que desarrollados por el Ministerio "
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Acceso a Internet de las viviendas principales según tipos de conexión por islas de Canarias. 2010",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a05003423-acceso-a-internet-de-las-viviendas-principales-segun-tipos-de-conexion-por-islas-de-canarias-2010",
+          "descripcion": "Acceso a Internet de las viviendas principales según tipos de conexión por islas de Canarias. 2010."
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Acceso a Internet de las viviendas principales según tipos de conexión y tamaños de municipio de Canarias. 2010",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a05003423-acceso-a-internet-de-las-viviendas-principales-segun-tipos-de-conexion-y-tamanos-de-municipio-de-canarias-2010",
+          "descripcion": "Acceso a Internet de las viviendas principales según tipos de conexión y tamaños de municipio de Canarias. 2010."
+        }
+      ]
+    },
+    {
+      "fuente": "World Bank",
+      "spec": "worldbank:SL.UEM.TOTL.ZS:Desempleo (% poblacion activa)",
+      "ok": true,
+      "datos": [
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2025",
+          "valor": 5.97
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2024",
+          "valor": 6.801
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2023",
+          "valor": 7.947
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2022",
+          "valor": 9.231
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2021",
+          "valor": 13.158
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2020",
+          "valor": 13.697
+        }
+      ]
+    }
+  ]
+}

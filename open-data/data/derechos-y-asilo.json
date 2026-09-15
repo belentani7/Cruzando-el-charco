@@ -1,0 +1,44 @@
+{
+  "tema": "derechos-y-asilo",
+  "portal": "cruzando-el-charco",
+  "registros": [
+    {
+      "fuente": "Wikipedia ES",
+      "spec": "mediawiki:es.wikipedia.org:derecho de asilo",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": "Derecho de asilo",
+          "url": "https://es.wikipedia.org/wiki/Derecho_de_asilo",
+          "fragmento": "artículo 14 de la Declaración Universal de Derechos Humanos reconoce este derecho: En caso de persecución, toda persona tiene derecho a buscar asilo, y a disfrutar"
+        },
+        {
+          "titulo": "Derecho de asilo en la Unión Europea",
+          "url": "https://es.wikipedia.org/wiki/Derecho_de_asilo_en_la_Uni%C3%B3n_Europea",
+          "fragmento": "El derecho de asilo en la Unión Europea se formó a mitad del siglo XX entre sus Estados miembros tras la aplicación de la Convención sobre el Estatuto"
+        },
+        {
+          "titulo": "Derecho de asilo (película)",
+          "url": "https://es.wikipedia.org/wiki/Derecho_de_asilo_%28pel%C3%ADcula%29",
+          "fragmento": "Nacional UNEAC de Cine, Radio y Televisión.[cita requerida] Derecho de asilo en Internet Movie Database (en inglés) Derecho de Asilo en la página de su protagonista"
+        },
+        {
+          "titulo": "Asilo político",
+          "url": "https://es.wikipedia.org/wiki/Asilo_pol%C3%ADtico",
+          "fragmento": "El asilo político es el derecho que tiene una persona a no ser extraditada de un país a otro que lo requiere para juzgarle por delitos políticos.​ Cuando"
+        },
+        {
+          "titulo": "Asilo humanitario",
+          "url": "https://es.wikipedia.org/wiki/Asilo_humanitario",
+          "fragmento": "disponen de la suficiente protección por parte del gobierno de su propio país. El antecedente del derecho de asilo territorial, es el asilo sagrado, promovido"
+        }
+      ]
+    },
+    {
+      "fuente": "REST Countries",
+      "spec": "restcountries",
+      "ok": true,
+      "datos": []
+    }
+  ]
+}

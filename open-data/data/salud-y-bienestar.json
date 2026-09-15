@@ -1,0 +1,81 @@
+{
+  "tema": "salud-y-bienestar",
+  "portal": "cruzando-el-charco",
+  "registros": [
+    {
+      "fuente": "PubMed",
+      "spec": "pubmed:LGBT migrant health",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": "LGBT Myanmar Migrants in Thailand: Unveiling Diverse Forms of Abuse, Healthy and Unhealthy Coping Strategies.",
+          "revista": "Journal of homosexuality",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39495198/"
+        },
+        {
+          "titulo": "Silent suffering of Afghanistan's LGBT+ community.",
+          "revista": "The Lancet. Global health",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37591575/"
+        },
+        {
+          "titulo": "The Health Needs of Sexual and Gender Minority Migrant Women in the United States: A Scoping Review.",
+          "revista": "LGBT health",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37540144/"
+        },
+        {
+          "titulo": "Improving access to oral pre-exposure prophylaxis for HIV among international migrant populations.",
+          "revista": "The Lancet. Public health",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37421969/"
+        },
+        {
+          "titulo": "Multidimensional Intelligences Model as a predictor for coming out acceptance and growth among LGB non-migrant Hispanics: A pilot study.",
+          "revista": "Research square",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36798222/"
+        }
+      ]
+    },
+    {
+      "fuente": "World Bank",
+      "spec": "worldbank:SH.XPD.CHEX.GD.ZS:Gasto en salud (% PIB)",
+      "ok": true,
+      "datos": [
+        {
+          "indicador": "Gasto en salud (% PIB)",
+          "pais": "Brazil",
+          "anio": "2025",
+          "valor": null
+        },
+        {
+          "indicador": "Gasto en salud (% PIB)",
+          "pais": "Brazil",
+          "anio": "2024",
+          "valor": null
+        },
+        {
+          "indicador": "Gasto en salud (% PIB)",
+          "pais": "Brazil",
+          "anio": "2023",
+          "valor": 9.73092747
+        },
+        {
+          "indicador": "Gasto en salud (% PIB)",
+          "pais": "Brazil",
+          "anio": "2022",
+          "valor": 9.38739491
+        },
+        {
+          "indicador": "Gasto en salud (% PIB)",
+          "pais": "Brazil",
+          "anio": "2021",
+          "valor": 9.63646507
+        },
+        {
+          "indicador": "Gasto en salud (% PIB)",
+          "pais": "Brazil",
+          "anio": "2020",
+          "valor": 9.62326527
+        }
+      ]
+    }
+  ]
+}

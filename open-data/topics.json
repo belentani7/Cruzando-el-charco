@@ -1,0 +1,112 @@
+{
+  "portal": "cruzando-el-charco",
+  "repo": "belentani7/Cruzando-el-charco",
+  "dominio": "Acogida, arraigo y derechos (migrantes LGBT+)",
+  "generado_utc": "2026-09-15T14:48:48+00:00",
+  "orden_idiomas": [
+    "pt",
+    "es",
+    "en",
+    "ca"
+  ],
+  "fuentes": [
+    {
+      "tema": "derechos-y-asilo",
+      "fuente": "Wikipedia ES",
+      "spec": "mediawiki:es.wikipedia.org:derecho de asilo",
+      "ok": true
+    },
+    {
+      "tema": "derechos-y-asilo",
+      "fuente": "REST Countries",
+      "spec": "restcountries",
+      "ok": true
+    },
+    {
+      "tema": "salud-y-bienestar",
+      "fuente": "PubMed",
+      "spec": "pubmed:LGBT migrant health",
+      "ok": true
+    },
+    {
+      "tema": "salud-y-bienestar",
+      "fuente": "World Bank",
+      "spec": "worldbank:SH.XPD.CHEX.GD.ZS:Gasto en salud (% PIB)",
+      "ok": true
+    },
+    {
+      "tema": "vivienda-y-empleo",
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:vivienda",
+      "ok": true
+    },
+    {
+      "tema": "vivienda-y-empleo",
+      "fuente": "World Bank",
+      "spec": "worldbank:SL.UEM.TOTL.ZS:Desempleo (% poblacion activa)",
+      "ok": true
+    },
+    {
+      "tema": "contexto-demografico-ue",
+      "fuente": "Eurostat",
+      "spec": "eurostat_demo",
+      "ok": true
+    },
+    {
+      "tema": "comunidad-y-cultura",
+      "fuente": "Wikipedia ES",
+      "spec": "mediawiki:es.wikipedia.org:diversidad sexual",
+      "ok": true
+    },
+    {
+      "tema": "comunidad-y-cultura",
+      "fuente": "Wikilibros ES",
+      "spec": "mediawiki:es.wikibooks.org:salud",
+      "ok": true
+    },
+    {
+      "tema": "tramites-y-datos",
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:empleo",
+      "ok": true
+    },
+    {
+      "tema": "tramites-y-datos",
+      "fuente": "IBGE",
+      "spec": "ibge_estados",
+      "ok": true
+    }
+  ],
+  "temas": [
+    {
+      "tema": "derechos-y-asilo",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
+    },
+    {
+      "tema": "salud-y-bienestar",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
+    },
+    {
+      "tema": "vivienda-y-empleo",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
+    },
+    {
+      "tema": "contexto-demografico-ue",
+      "fuentes_ok": 1,
+      "fuentes_total": 1
+    },
+    {
+      "tema": "comunidad-y-cultura",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
+    },
+    {
+      "tema": "tramites-y-datos",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
+    }
+  ]
+}
