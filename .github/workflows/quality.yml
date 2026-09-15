@@ -32,7 +32,7 @@ jobs:
         with:
           args: >-
             --no-progress
-            --accept 200,203,204,206,301,302,403,429
+            --accept 200,202,203,204,206,301,302,403,429
             --exclude '^tel:'
             --exclude 'https://dublab.es/'
             --exclude '^https://www\.sitgesanytime\.com/'
