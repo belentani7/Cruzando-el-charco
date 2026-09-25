@@ -1,0 +1,10 @@
+# Reglas Cursor — Cruzando el Charco (compacto)
+
+- Frontend estático: `index.html` + `assets/app.js` + `assets/content.js`. **NUNCA romper**; cambios aditivos.
+- `assets/content.js` = fuente única de datos de recursos. No duplicar en HTML ni en otros JS.
+- Seguridad: sin analítica, sin cookies no esenciales, sin geolocalización, sin secretos en git, CSP restrictiva (no añadir orígenes ni scripts inline).
+- Accesibilidad WCAG 2.1 AA: teclado, foco visible, contraste, ARIA, `prefers-reduced-motion`.
+- Todo texto nuevo traducible con `data-i18n` / `data-i18n-placeholder`. Idiomas: es, ca, en, it, fr, de, pt, zh, ur, ar, fi (ar/ur → `dir="rtl"`).
+- Comandos: `npm test` · `npm run news:update` · `python -m http.server 8080`.
+- Commits convencionales (`feat:`, `fix:`, `docs:`, `chore:`…). CI siempre verde.
+- Documentación viva en `docs/` (PRD, SRS, plan, ADRs): actualizar en el mismo PR que el cambio.
