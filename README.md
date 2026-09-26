@@ -1,3 +1,5 @@
+[![Open in VS Code](https://img.shields.io/badge/Open_in-VS_Code-007ACC?logo=visualstudiocode&logoColor=white)](https://github.dev/belentani7/Cruzando-el-charco)
+
 # Cruzando el Charco
 
 Guía comunitaria, multilingüe y accesible para personas LGTBIQ+ migrantes, visitantes y residentes de Barcelona y Sitges.
