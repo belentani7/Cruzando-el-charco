@@ -10,7 +10,7 @@
 
 // Sube esta version al cambiar CORE. Un nombre distinto hace que el navegador
 // instale el cache nuevo y borre el viejo (ver el evento activate).
-const CACHE = "cruzando-el-charco-v1";
+const CACHE = "cruzando-el-charco-v4";
 
 // Todo lo que debe estar disponible sin conexion.
 // Al anadir un archivo critico, anadelo aqui o no estara offline.
@@ -18,7 +18,11 @@ const CORE = [
   "./", "index.html", "legal.html", "404.html", "manifest.webmanifest", "assets/icon.svg",
   "assets/styles.css", "assets/config.js", "assets/content.js", "assets/app.js", "data/news.json",
   "assets/vendor/gsap.min.js", "assets/vendor/ScrollTrigger.min.js", "assets/vendor/CustomEase.min.js", "assets/vendor/lenis.min.js",
-  "assets/images/barcelona-pride.jpg", "assets/images/sitges-pride.jpg"
+  "assets/images/barcelona-pride.jpg", "assets/images/sitges-pride.jpg",
+  // Ampliación 2026-10-11: herramientas locales (salud, sonido, trámites),
+  // buscador rápido y motor de orientación. Todas funcionan sin red.
+  "assets/ai-engine.js", "assets/studio.js", "assets/health.js", "assets/tramites.js",
+  "assets/ux.js", "assets/theme-init.js"
 ];
 
 // INSTALL: descarga todo lo critico ANTES de activarse.
@@ -51,6 +55,14 @@ self.addEventListener("fetch", (event) => {
       caches.open(CACHE).then((cache) => cache.put(event.request, copy));
       return response;
     }).catch(() => caches.match(event.request)));
+    return;
+  }
+
+  // NAVEGACIÓN: si no hay conexión y la página pedida no está en caché, se sirve
+  // la portada cacheada en lugar de una pantalla de error del navegador. Una
+  // persona buscando ayuda no debería ver un dinosaurio.
+  if (event.request.mode === "navigate") {
+    event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request).catch(() => caches.match("index.html"))));
     return;
   }
 

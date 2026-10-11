@@ -28,3 +28,28 @@ Fecha: 2026-09-25 · Estado: Approved · QA como fase final obligatoria
 
 ## Definition of Done
 Cadena documental completa · CI verde · commit aditivo fusionado · registro actualizado · cero eliminaciones.
+
+
+## Fase 5 — Auditoría máxima aplicada (completada el 2026-10-11)
+
+No es un informe: es trabajo verificado sobre el propio repositorio.
+
+- [x] Traducción real de 126 claves nuevas × 11 idiomas y corrección de ~30 claves por
+      idioma que heredaban español sin avisar (`assets/content.js`).
+- [x] Interfaz completa etiquetada: `data-i18n`, `-placeholder`, `-alt`, `-aria-label`
+      y `-title`; 99 ediciones aditivas en `index.html`.
+- [x] Gate nuevo `npm run i18n:audit` (paridad, claves usadas y cognados justificados)
+      y utilidad `scripts/insert-locale-keys.mjs` para altas simultáneas.
+- [x] Orquestador `npm run audit:full` (`scripts/audit-all.mjs`) con seis verificaciones
+      sin red; `npm test` amplía a DOM y agentes.
+- [x] Auditoría de navegador con axe: 0 violaciones serias, día y noche, escritorio y
+      móvil. Contrastes corregidos por medición (`.level-A` 8.9:1 día / 10:1 noche;
+      campos del estudio musical adaptados al tema).
+- [x] Sección 17 "IA con límites": contrato visible, prompt master copiable y métricas
+      del motor local, traducida a los 11 idiomas.
+- [x] `PROMPT-MASTER.md` publicado y aplicado sobre este mismo trabajo.
+- [x] Bugs reales corregidos: rutas relativas de `check-dist.mjs`, bloque muerto de
+      `legal.html` bajo su CSP, cifras de recursos escritas a mano en el audit.
+- [x] Fallos silenciosos del checker de claims (bloqueaba `cura` en italiano) y del
+      detector de autoplay (bloqueaba la etiqueta "sin reproducción automática").
+- [ ] Pendiente: revisión humana de las traducciones nuevas y de las fichas canónicas.

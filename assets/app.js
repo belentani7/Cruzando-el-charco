@@ -48,9 +48,14 @@
     document.documentElement.dir = ["ar", "ur"].includes(language) ? "rtl" : "ltr";
     $$('[data-i18n]').forEach((node) => { node.textContent = t(node.dataset.i18n); });
     $$('[data-i18n-placeholder]').forEach((node) => { node.placeholder = t(node.dataset.i18nPlaceholder); });
+    // Extensión aditiva: alt, aria-label y title siguen el mismo sistema que data-i18n.
+    $$('[data-i18n-alt]').forEach((node) => { node.alt = t(node.dataset.i18nAlt); });
+    $$('[data-i18n-aria-label]').forEach((node) => { node.setAttribute('aria-label', t(node.dataset.i18nAriaLabel)); });
+    $$('[data-i18n-title]').forEach((node) => { node.title = t(node.dataset.i18nTitle); });
     $("#language-select").value = language;
     renderEmergencies();
     renderDirectory();
+    document.dispatchEvent(new CustomEvent("charco:language", { detail: { language } }));
     if (language !== "es") showToast(t("translationNotice"));
   }
 
@@ -88,7 +93,8 @@
   const categoryLabels = {
     all: "Todo", apoyo: "Apoyo", migracion: "Papeles", derechos: "Derechos", salud: "Salud",
     comunidad: "Comunidad", juventud: "Juventud", trabajo: "Trabajo", cotidiano: "Vida diaria",
-    vivienda: "Vivienda", cultura: "Cultura", ocio: "Ocio", noche: "+18 discreto"
+    vivienda: "Vivienda", cultura: "Cultura", ocio: "Ocio", noche: "+18 discreto",
+    mental: "Salud mental", transporte: "Moverse"
   };
 
   function setupCategoryFilters() {
@@ -149,6 +155,7 @@
     });
     $("#result-count").textContent = `${filtered.length} / ${content.resources.length} recursos · +18 ${showAdult ? "visible" : "oculto"}`;
     $("#empty-state").hidden = filtered.length !== 0;
+    document.dispatchEvent(new CustomEvent("charco:directory", { detail: { count: filtered.length, total: content.resources.length } }));
   }
 
   function renderCulture() {
@@ -161,8 +168,10 @@
       const note = el("p", "", item.note);
       const link = el("a", "", item.access);
       link.href = safeUrl(item.url);
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
+      if (!String(item.url).startsWith("#")) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
       card.append(type, title, note, link);
       list.append(card);
     });
@@ -185,7 +194,7 @@
       output.append(el("span", "plan-stamp", `PLAN / ${String(Math.floor(Math.random() * 90) + 10)}`), el("h3", "", chosen.title));
       const list = el("ol");
       chosen.steps.forEach((step) => list.append(el("li", "", step)));
-      output.append(list, el("p", "", "Comprueba horarios, accesibilidad, precio y transporte antes de salir."));
+      output.append(list, el("p", "", t("planNote")));
     });
   }
 
@@ -200,11 +209,25 @@
       button.role = "tab";
       button.id = `agent-tab-${agent.id}`;
       button.setAttribute("aria-selected", String(index === 0));
+      button.setAttribute("aria-controls", "chat-log");
+      button.tabIndex = index === 0 ? 0 : -1;
       const avatar = el("span", "agent-avatar", initials(agent.name));
       const copy = el("span");
       copy.append(el("strong", "", agent.name), el("small", "", agent.role));
       button.append(avatar, copy);
       button.addEventListener("click", () => selectAgent(agent, button));
+      button.addEventListener("keydown", (event) => {
+        if (!["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const tabs = $$(".agent-tab");
+        const forward = event.key === "ArrowRight" || event.key === "ArrowDown";
+        const position = forward
+          ? (index + 1) % tabs.length
+          : event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index - 1 + tabs.length) % tabs.length;
+        tabs.forEach((tab, tabIndex) => { tab.tabIndex = tabIndex === position ? 0 : -1; });
+        tabs[position].focus();
+        selectAgent(content.agents[position], tabs[position]);
+      });
       tabs.append(button);
     });
     selectAgent(content.agents[0], $(".agent-tab"));
@@ -283,6 +306,25 @@
     return typeof data.reply === "string" ? data.reply.slice(0, 4000) : null;
   }
 
+  /* Orden de resolución de una respuesta:
+     1) extensión local registrada en window.CHARCO_EXTENSIONS (motor IA con citas);
+     2) backend remoto opcional, solo con consentimiento explícito;
+     3) respaldo local incluido en este archivo, que funciona sin red. */
+  async function resolveAgentReply(agent, question) {
+    const extension = window.CHARCO_EXTENSIONS && window.CHARCO_EXTENSIONS.agentReply;
+    if (typeof extension === "function") {
+      try {
+        const extended = await extension(agent, question, language);
+        if (typeof extended === "string") return { text: extended, sources: [], mode: "extension" };
+        if (extended && typeof extended.text === "string") return extended;
+      } catch { /* si la extensión falla, se sigue con el respaldo */ }
+    }
+    let reply = null;
+    try { reply = await remoteAgentReply(agent, question); }
+    catch { showToast("La IA externa no respondió. Continúo con el modo local de la guía."); }
+    return { text: reply || localAgentReply(agent, question), sources: [], mode: reply ? "remote" : "local" };
+  }
+
   function setupAgentForm() {
     $("#agent-form").addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -291,10 +333,9 @@
       if (!question) return;
       input.value = "";
       addChatMessage("user", question);
-      let reply = null;
-      try { reply = await remoteAgentReply(currentAgent, question); }
-      catch { showToast("La IA externa no respondió. Continúo con el modo local de la guía."); }
-      addChatMessage("agent", reply || localAgentReply(currentAgent, question));
+      const result = await resolveAgentReply(currentAgent, question);
+      addChatMessage("agent", result.text);
+      document.dispatchEvent(new CustomEvent("charco:agent-reply", { detail: { result, agent: currentAgent, question } }));
     });
   }
 
@@ -315,20 +356,22 @@
       items.forEach((item) => {
         const card = el("article", "news-card");
         const source = el("div", "news-source");
-        source.append(el("span", "", String(item.source || "Fuente")), el("time", "", String(item.date || "Sin fecha")));
-        const title = el("h3", "", stripMarkup(item.title || "Sin título"));
+        source.append(el("span", "", String(item.source || t("newsSource"))), el("time", "", String(item.date || t("newsNoDate"))));
+        const title = el("h3", "", stripMarkup(item.title || t("newsNoTitle")));
         const description = el("p", "", stripMarkup(item.description || "").slice(0, 220));
-        const link = el("a", "", "Leer en la fuente");
+        const link = el("a", "", t("newsReadLink"));
         link.href = safeUrl(item.url);
         link.target = "_blank";
         link.rel = "noopener noreferrer";
         card.append(source, title, description, link);
         grid.append(card);
       });
-      status.textContent = `${data.total || items.length} piezas conservadas · actualización ${data.updated || "sin fecha"}`;
+      status.textContent = t("newsCount")
+        .replace("{n}", String(data.total || items.length))
+        .replace("{date}", String(data.updated || t("newsNoDate")));
     } catch {
-      grid.replaceChildren(el("p", "", "El archivo no está disponible ahora. Usa el directorio de fuentes y vuelve a intentarlo."));
-      status.textContent = "Archivo temporalmente no disponible";
+      grid.replaceChildren(el("p", "", t("newsUnavailable")));
+      status.textContent = t("newsOfflineStatus");
     }
   }
 
@@ -490,7 +533,22 @@
     window.setInterval(updateClock, 30000);
     setupAnimations();
     registerServiceWorker();
+    document.dispatchEvent(new CustomEvent("charco:ready", { detail: { resources: content.resources.length } }));
   }
+
+  /* API pública mínima para módulos añadidos (ux.js, health.js, studio.js…).
+     Es aditiva: si nada la usa, la página se comporta igual que antes. */
+  window.CHARCO_APP = Object.freeze({
+    t,
+    showToast,
+    applyLanguage,
+    renderDirectory,
+    addChatMessage,
+    get language() { return language; },
+    get currentAgent() { return currentAgent; },
+    setCurrentAgent(agent) { currentAgent = agent; },
+    version: "1.1.0"
+  });
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();

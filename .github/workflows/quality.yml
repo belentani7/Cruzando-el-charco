@@ -22,7 +22,22 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Validate structure, security rules and content
         run: npm test
+      - name: Audit translations, DOM, agents and build integrity
+        run: |
+          npm run i18n:audit
+          npm run dom:audit
+          npm run agents:eval
+          npm run dist:check
+      - name: Keep the agent evaluation report fresh
+        run: npm run agents:report
 
+  # Sonda externa de enlaces. Es informativa a propósito: muchos prestadores
+  # oficiales bloquean peticiones automatizadas o cambian de ruta sin aviso, y
+  # un rojo aquí no prueba un defecto del repositorio. El informe se publica en
+  # el resumen del job para poder reaccionar. La política vinculante de enlaces
+  # es `npm run links:check` (allowlist revisada a mano en el propio script).
+  # Para volver a hacerla bloqueante: revisa el resumen, añade los hosts
+  # bloqueados a `manuallyVerifiedDomains` o a `--exclude`, y pon `fail: true`.
   links:
     runs-on: ubuntu-latest
     steps:
@@ -32,6 +47,9 @@ jobs:
         with:
           args: >-
             --no-progress
+            --max-retries 2
+            --retry-wait-time 3
+            --timeout 25
             --accept 200,202,203,204,206,301,302,403,429
             --exclude '^tel:'
             --exclude 'https://dublab.es/'
@@ -40,4 +58,13 @@ jobs:
             --exclude 'https://proteccion-asilo\.interior\.gob\.es/'
             --exclude-path 'open-data'
             './**/*.html' './**/*.md' './assets/content.js'
-          fail: true
+          output: ./lychee-report.md
+          fail: false
+      - name: Publish the link report in the job summary
+        if: always()
+        run: |
+          if [ -f ./lychee-report.md ]; then
+            cat ./lychee-report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Sin informe de enlaces." >> "$GITHUB_STEP_SUMMARY"
+          fi

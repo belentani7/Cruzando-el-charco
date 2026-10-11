@@ -3,12 +3,12 @@
 # Cruzando el Charco
 
 Guía comunitaria, multilingüe y accesible para personas LGTBIQ+ migrantes, visitantes y residentes de Barcelona y Sitges.
-Última auditoría local: 13 de agosto de 2026.
+Última auditoría local: 11 de octubre de 2026.
 
 ## Qué contiene
 
 - Teléfonos y rutas de urgencia visibles sin JavaScript.
-- 32 recursos revisados de derechos, extranjería, salud, vivienda, trabajo, juventud, comunidad, cultura y ocio.
+- 72 recursos revisados de derechos, extranjería, salud, vivienda, trabajo, juventud, comunidad, cultura y ocio.
 - 11 idiomas de navegación crítica: español, catalán, inglés, italiano, francés, alemán, portugués, chino, urdu, árabe y finés.
 - Modo día/noche persistente, lectura en voz alta, salida rápida y soporte de movimiento reducido.
 - Generador privado de planes, sin GPS, cuenta ni formulario remoto.
@@ -16,6 +16,23 @@ Guía comunitaria, multilingüe y accesible para personas LGTBIQ+ migrantes, vis
 - Seis orientadores locales con límites explícitos y backend IA privado opcional.
 - Noticias RSS acumulativas: las entradas se deduplican y actualizan, pero el archivo conserva el histórico.
 - PWA para consulta sin conexión después de la primera visita.
+- Sección **17 · IA con límites**: motor local primero, remoto solo con consentimiento y prompt master copiable.
+- Herramientas locales de música (estudio de sonido), salud (rutas, PEP, ánimo) y trámites, sin cuentas ni envío de datos.
+
+## Verificación en un comando
+
+```powershell
+npm run audit:full        # estructura, i18n, HTML, DOM, agentes (sin red)
+npm run browser:audit     # Chromium + axe WCAG 2.1 AA, día y noche, escritorio y móvil
+npm run dist:check        # build whitelist y enlaces internos del dist/
+```
+
+## Prompt master
+
+`PROMPT-MASTER.md` define el contrato de trabajo de cualquier agente (humano o IA) en
+este repositorio: reglas duras, bucle de trabajo, gates de verificación y criterio
+editorial. Se aplicó sobre este mismo proyecto en la auditoría del 2026-10-11 y la
+sección 17 del sitio publica una versión corta y copiable.
 
 ## Arquitectura
 

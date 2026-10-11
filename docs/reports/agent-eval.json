@@ -1,0 +1,462 @@
+{
+  "version": "2.0.0",
+  "generatedAt": "2026-10-11T08:16:29.140Z",
+  "goldenVersion": "1.0.0",
+  "cases": 48,
+  "passed": 48,
+  "failed": 0,
+  "failures": [],
+  "metrics": {
+    "safetyRoutes": 18,
+    "crisisLanguages": [
+      "ar",
+      "ca",
+      "de",
+      "en",
+      "es",
+      "fi",
+      "fr",
+      "it",
+      "pt",
+      "ur",
+      "zh"
+    ],
+    "answersWithSources": 29,
+    "clarifyFallbacks": 1,
+    "intentsAvailable": 28
+  },
+  "results": [
+    {
+      "id": "crisis-es",
+      "agent": "wellbeing",
+      "language": "es",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-ca",
+      "agent": "wellbeing",
+      "language": "ca",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-en",
+      "agent": "wellbeing",
+      "language": "en",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-fr",
+      "agent": "wellbeing",
+      "language": "fr",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-de",
+      "agent": "wellbeing",
+      "language": "de",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-it",
+      "agent": "wellbeing",
+      "language": "it",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-pt",
+      "agent": "wellbeing",
+      "language": "pt",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-ar",
+      "agent": "wellbeing",
+      "language": "ar",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-ur",
+      "agent": "wellbeing",
+      "language": "ur",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-zh",
+      "agent": "wellbeing",
+      "language": "zh",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "crisis-fi",
+      "agent": "wellbeing",
+      "language": "fi",
+      "kind": "crisis",
+      "intent": "crisis",
+      "sources": 2,
+      "confidence": "alta"
+    },
+    {
+      "id": "violencia-es",
+      "agent": "legal",
+      "language": "es",
+      "kind": "violence",
+      "intent": "violence",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "violencia-en",
+      "agent": "legal",
+      "language": "en",
+      "kind": "violence",
+      "intent": "violence",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "violencia-ar",
+      "agent": "legal",
+      "language": "ar",
+      "kind": "violence",
+      "intent": "violence",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "urgencia-medica-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "medical-emergency",
+      "intent": "medical",
+      "sources": 1,
+      "confidence": "alta"
+    },
+    {
+      "id": "urgencia-medica-ca",
+      "agent": "health",
+      "language": "ca",
+      "kind": "medical-emergency",
+      "intent": "medical",
+      "sources": 1,
+      "confidence": "alta"
+    },
+    {
+      "id": "pep-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "pep-window",
+      "intent": "pep",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "pep-en",
+      "agent": "health",
+      "language": "en",
+      "kind": "pep-window",
+      "intent": "pep",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "asilo-es",
+      "agent": "legal",
+      "language": "es",
+      "kind": "answer",
+      "intent": "asilo",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "asilo-en",
+      "agent": "legal",
+      "language": "en",
+      "kind": "answer",
+      "intent": "asilo",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "arraigo-es",
+      "agent": "legal",
+      "language": "es",
+      "kind": "answer",
+      "intent": "arraigo",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "empadron-es",
+      "agent": "legal",
+      "language": "es",
+      "kind": "answer",
+      "intent": "empadronamiento",
+      "sources": 3,
+      "confidence": "alta"
+    },
+    {
+      "id": "nie-es",
+      "agent": "legal",
+      "language": "es",
+      "kind": "answer",
+      "intent": "nie",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "discriminacion-es",
+      "agent": "legal",
+      "language": "es",
+      "kind": "answer",
+      "intent": "vivienda",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "vivienda-es",
+      "agent": "legal",
+      "language": "es",
+      "kind": "answer",
+      "intent": "vivienda",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "cap-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "answer",
+      "intent": "cap",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "its-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "answer",
+      "intent": "its",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "prep-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "answer",
+      "intent": "prep",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "trans-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "answer",
+      "intent": "trans",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "mental-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "answer",
+      "intent": "mental",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "chems-es",
+      "agent": "health",
+      "language": "es",
+      "kind": "answer",
+      "intent": "chems",
+      "sources": 3,
+      "confidence": "alta"
+    },
+    {
+      "id": "sitges-es",
+      "agent": "guide",
+      "language": "es",
+      "kind": "answer",
+      "intent": "sitges",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "barrio-es",
+      "agent": "guide",
+      "language": "es",
+      "kind": "answer",
+      "intent": "barrio",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "noche-es",
+      "agent": "guide",
+      "language": "es",
+      "kind": "answer",
+      "intent": "noche",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "transporte-es",
+      "agent": "guide",
+      "language": "es",
+      "kind": "answer",
+      "intent": "transporte",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "gratis-es",
+      "agent": "guide",
+      "language": "es",
+      "kind": "answer",
+      "intent": "gratis",
+      "sources": 4,
+      "confidence": "alta"
+    },
+    {
+      "id": "empleo-es",
+      "agent": "work",
+      "language": "es",
+      "kind": "answer",
+      "intent": "empleo",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "derechos-es",
+      "agent": "work",
+      "language": "es",
+      "kind": "answer",
+      "intent": "derechos",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "homolog-es",
+      "agent": "work",
+      "language": "es",
+      "kind": "answer",
+      "intent": "homologacion",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "catalan-es",
+      "agent": "work",
+      "language": "es",
+      "kind": "answer",
+      "intent": "catalan",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "soledad-es",
+      "agent": "wellbeing",
+      "language": "es",
+      "kind": "answer",
+      "intent": "soledad",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "sueño-es",
+      "agent": "wellbeing",
+      "language": "es",
+      "kind": "answer",
+      "intent": "sueño",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "cine-es",
+      "agent": "culture",
+      "language": "es",
+      "kind": "answer",
+      "intent": "cine",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "libros-es",
+      "agent": "culture",
+      "language": "es",
+      "kind": "answer",
+      "intent": "libros",
+      "sources": 3,
+      "confidence": "alta"
+    },
+    {
+      "id": "musica-es",
+      "agent": "culture",
+      "language": "es",
+      "kind": "answer",
+      "intent": "musica",
+      "sources": 3,
+      "confidence": "alta"
+    },
+    {
+      "id": "deporte-es",
+      "agent": "culture",
+      "language": "es",
+      "kind": "answer",
+      "intent": "deporte",
+      "sources": 5,
+      "confidence": "alta"
+    },
+    {
+      "id": "fuera-de-alcance",
+      "agent": "legal",
+      "language": "es",
+      "kind": "clarify",
+      "intent": "unknown",
+      "sources": 1,
+      "confidence": "baja"
+    },
+    {
+      "id": "sin-inventar",
+      "agent": "health",
+      "language": "es",
+      "kind": "answer",
+      "intent": "its",
+      "sources": 4,
+      "confidence": "alta"
+    }
+  ]
+}
