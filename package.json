@@ -6,13 +6,20 @@
   "description": "Guía comunitaria, multilingüe y accesible para personas LGTBIQ+ migrantes en Barcelona y Sitges.",
   "scripts": {
     "check": "node scripts/check-site.mjs",
+    "i18n:audit": "node scripts/i18n-audit.mjs",
     "html:validate": "html-validate index.html legal.html 404.html",
     "links:check": "node scripts/check-links.mjs",
+    "dom:audit": "node scripts/dom-audit.mjs",
+    "agents:eval": "node scripts/eval-agents.mjs",
+    "agents:report": "node scripts/eval-agents.mjs --write",
+    "static:sync": "node scripts/sync-static.mjs",
     "browser:audit": "node scripts/browser-audit.mjs",
     "build": "node scripts/build-pages.mjs",
+    "dist:check": "node scripts/build-pages.mjs && node scripts/check-dist.mjs",
     "news:update": "node scripts/update-news.mjs",
     "serve": "npx --yes serve@14.2.4 .",
-    "test": "npm run check && npm run html:validate && npm run browser:audit"
+    "audit:full": "node scripts/audit-all.mjs",
+    "test": "npm run check && npm run i18n:audit && npm run html:validate && npm run dom:audit && npm run agents:eval && npm run browser:audit"
   },
   "engines": {
     "node": ">=22"
@@ -20,6 +27,7 @@
   "devDependencies": {
     "@playwright/test": "^1.62.1",
     "axe-core": "^4.13.0",
-    "html-validate": "^11.6.2"
+    "html-validate": "^11.6.2",
+    "jsdom": "^26.1.0"
   }
 }
