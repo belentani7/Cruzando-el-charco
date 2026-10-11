@@ -1,5 +1,18 @@
 # Lista de lanzamiento
 
+## Verificación automatizada (2026-10-11)
+
+- [x] `npm run check`: estructura, CSP, sin autoplay, sin secretos y sin claims absolutos.
+- [x] `npm run i18n:audit`: 333 claves con paridad exacta en 11 idiomas y 0 cadenas en
+      español sin justificar.
+- [x] `npm run html:validate`: 0 problemas en las tres páginas publicadas.
+- [x] `npm run dom:audit`: 56 comprobaciones funcionales sin navegador.
+- [x] `npm run agents:eval`: 48/48 casos, derivación a teléfonos reales en 11 idiomas.
+- [x] `npm run browser:audit`: axe sin violaciones serias en día y noche, escritorio y móvil.
+- [x] `npm run dist:check`: build con lista blanca y enlaces internos correctos.
+- [ ] Sonda externa de enlaces: informativa (hosts oficiales que filtran robots); informe
+      publicado en el resumen del job de CI.
+
 ## Código
 
 - [x] Sitio aislado del corpus y de archivos de entorno antiguos.
