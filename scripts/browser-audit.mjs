@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -41,7 +42,17 @@ const server = createServer(async (request, response) => {
 });
 await new Promise((resolve) => server.listen(4173, "127.0.0.1", resolve));
 
-const chromiumPath = process.env.CHROMIUM_PATH ?? (process.platform === "linux" ? "/usr/bin/chromium" : undefined);
+// Ruta del navegador: se respeta la variable de entorno y, si no, se usa el
+// Chromium del sistema solo cuando existe. En CI manda el navegador propio de
+// Playwright (playwright install --with-deps chromium), no una ruta fija.
+const chromiumPath = [
+  process.env.CHROMIUM_PATH,
+  "/usr/bin/chromium",
+  "/usr/bin/chromium-browser",
+  "/usr/bin/google-chrome"
+].filter(Boolean).find((candidate) => {
+  try { return existsSync(candidate); } catch { return false; }
+});
 const launchOptions = chromiumPath
   ? { executablePath: chromiumPath, headless: true }
   : process.platform === "win32"
