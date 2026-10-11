@@ -31,7 +31,15 @@ jobs:
       - name: Keep the agent evaluation report fresh
         run: npm run agents:report
 
+  # Sonda externa de enlaces. Es informativa a propósito: muchos prestadores
+  # oficiales bloquean peticiones automatizadas o cambian de ruta sin aviso, y
+  # un rojo aquí no prueba un defecto del repositorio. La política vinculante de
+  # enlaces es `npm run links:check` (allowlist revisada a mano en el propio
+  # script). Para volver a hacerla bloqueante: revisa el resumen del job,
+  # añade los hosts bloqueados a `manuallyVerifiedDomains` o a `--exclude`, y
+  # quita `continue-on-error`.
   links:
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -40,6 +48,9 @@ jobs:
         with:
           args: >-
             --no-progress
+            --max-retries 2
+            --retry-wait-time 3
+            --timeout 25
             --accept 200,202,203,204,206,301,302,403,429
             --exclude '^tel:'
             --exclude 'https://dublab.es/'
