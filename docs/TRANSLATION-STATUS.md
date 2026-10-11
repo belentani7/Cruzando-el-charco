@@ -8,10 +8,21 @@ La selección combina idiomas de uso local, mercados turísticos relevantes y co
 
 ## Cobertura actual
 
+- Auditoría automática: `npm run i18n:audit` comprueba paridad exacta de claves en los 11
+  idiomas, que cada `data-i18n*` usado en HTML/JS exista y que ninguna cadena larga se
+  quede en español sin justificar (lista blanca solo para cognados y nombres propios).
+- Estado 2026-10-11: 333 claves por idioma, 190 usos en la interfaz, 27 coincidencias
+  legítimas con el español y 0 errores.
+
 - Navegación principal crítica, acciones, privacidad, urgencia, búsqueda, planes, cultura, radio, agentes y noticias: traducidas en los 11 idiomas.
 - Dirección de lectura RTL: activa para árabe y urdu.
 - Nombres propios, teléfonos, direcciones y URLs: se conservan sin traducir.
-- Descripciones editoriales extensas, aviso legal y respuestas locales especializadas: versión canónica en español.
+- Interfaz completa: navegación, portada, urgencias, ruta, áreas de vida, directorio,
+  planes, dos orillas, cultura, radio, agentes, archivo, comprobaciones previas, salud,
+  música, trámites, movilidad, glosario y contrato de IA.
+- Descripciones editoriales extensas, fichas del directorio, aviso legal y respuestas
+  locales especializadas: versión canónica en español, marcada con la etiqueta `ES`
+  cuando el idioma activo no es español.
 
 ## Regla de calidad
 

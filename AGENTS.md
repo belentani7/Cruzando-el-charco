@@ -41,10 +41,25 @@ El contenido de recursos vive en `assets/content.js` y es la **fuente de verdad*
 
 Los idiomas RTL (`ar`, `ur`) deben mantener `dir="rtl"` correcto. La interfaz crítica debe estar traducida; las fichas largas pueden permanecer en español canónico.
 
+## Prompt master
+
+`PROMPT-MASTER.md` resume estas reglas en un contrato operativo (papel, bucle de trabajo,
+gates y criterio editorial) y publica una versión corta copiable en la sección 17 del
+sitio. Si añades una regla, se añade en los dos sitios: aquí y en el prompt master.
+
+## Traducciones
+
+`npm run i18n:audit` es el gate: paridad exacta de claves en los 11 idiomas, cada
+`data-i18n*` de la interfaz debe existir, y ninguna cadena larga puede quedarse en
+español sin justificación escrita en la lista blanca del propio script. Para añadir
+claves nuevas en todos los idiomas a la vez existe `scripts/insert-locale-keys.mjs`.
+
 ## Comandos
 
 ```bash
-npm test
+npm run audit:full      # estructura, i18n, HTML, DOM y agentes (sin red)
+npm run browser:audit   # Chromium + axe, día y noche, escritorio y móvil
+npm run dist:check      # build + integridad del dist
 npm run news:update
 python -m http.server 8080
 ```
