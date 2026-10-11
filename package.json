@@ -17,7 +17,7 @@
     "build": "node scripts/build-pages.mjs",
     "dist:check": "node scripts/build-pages.mjs && node scripts/check-dist.mjs",
     "news:update": "node scripts/update-news.mjs",
-    "serve": "npx --yes serve@14.2.4 .",
+    "serve": "node scripts/serve.mjs",
     "audit:full": "node scripts/audit-all.mjs",
     "test": "npm run check && npm run i18n:audit && npm run html:validate && npm run dom:audit && npm run agents:eval && npm run browser:audit"
   },
