@@ -121,6 +121,27 @@ async function auditPage(viewport, screenshotName) {
   if (!paletteOpen) errors.push("quick find palette did not open with Control+K");
   await page.keyboard.press("Escape");
 
+  // Las animaciones de aparición dejan secciones en opacity 0 y axe ignora el
+  // texto no visible: se recorren todas las secciones antes de medir para que
+  // la auditoría cubra la página entera y no solo lo que ya estaba en pantalla.
+  await page.evaluate(async () => {
+    const ids = [...document.querySelectorAll("main > section[id], section[id]")].map((node) => node.id);
+    for (const id of ids) {
+      document.getElementById(id)?.scrollIntoView({ block: "start" });
+      await new Promise((resolve) => setTimeout(resolve, 260));
+    }
+    window.scrollTo(0, document.body.scrollHeight);
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    window.scrollTo(0, 0);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+  });
+  const hiddenText = await page.evaluate(() =>
+    [...document.querySelectorAll("main > section")]
+      .filter((section) => Number(getComputedStyle(section).opacity) < 0.99)
+      .map((section) => section.id || section.className)
+  );
+  if (hiddenText.length) errors.push(`secciones sin hacer visible antes de medir: ${hiddenText.join(", ")}`);
+
   await page.addScriptTag({ url: "http://127.0.0.1:4173/node_modules/axe-core/axe.min.js" });
   const runAxe = () => page.evaluate(async () => window.axe.run(document, {
     runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21aa", "best-practice"] }
