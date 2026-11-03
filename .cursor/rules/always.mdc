@@ -1,0 +1,26 @@
+---
+description: Reglas globales del repositorio Cruzando el Charco
+alwaysApply: true
+globs:
+  - "**/*"
+---
+
+# Reglas de desarrollo — Cruzando el Charco
+
+## Seguridad (siempre)
+- No commitear secretos, API keys, tokens ni credenciales.
+- Ejecutar `gitleaks` antes de cada push.
+- CODEOWNERS: `@belentani7` revisión requerida en todos los cambios.
+- Convenciones de commit: `type(scope): summary` (feat, fix, docs, chore, refactor, test, perf, style).
+
+## Regla dura (AGENTS.md)
+- Nunca romper el frontend estático existente: `index.html`, `assets/app.js`, `assets/content.js`. Cambios aditivos o retrocompatibles únicamente.
+- `assets/content.js` = fuente única de datos de recursos.
+
+## Frontend estático (HTML/CSS/JS)
+- Impeccable: no gradient text, no side-stripe borders, no eyebrow en cada sección, hero heading <= 6rem, focus-visible, lang y viewport, touch targets >= 44px.
+- Accesibilidad WCAG 2.1 AA: teclado, foco visible, contraste, ARIA, prefers-reduced-motion, prefers-color-scheme.
+- i18n: todo texto nuevo con data-i18n / data-i18n-placeholder; 11 idiomas (ar/ur → dir="rtl").
+
+## Comandos
+- `npm run audit:full`, `npm run browser:audit`, `npm run dist:check`, `npm test`, `python -m http.server 8080`.

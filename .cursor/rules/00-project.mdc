@@ -1,0 +1,43 @@
+---
+description: Contexto, stack y convenciones base del proyecto
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Proyecto: belentani7__Cruzando-el-charco
+
+Stack detectado: ci, frontend, node, static-html, tests.
+Gestores de paquetes: npm.
+Tests: playwright.
+
+## Protocolo
+
+1. Spec-first: PRD → SRS → Design Doc → ADR → Plan → tests GWT.
+2. Cambios pequeños, reversibles y con verificación real.
+3. Conventional commits: `type(scope): summary`.
+4. No commitear secretos ni credenciales.
+5. No ejecutar TypeScript sin compilar en producción.
+
+## Comandos
+
+- `check`: `node scripts/check-site.mjs`
+- `i18n:audit`: `node scripts/i18n-audit.mjs`
+- `html:validate`: `html-validate index.html legal.html 404.html`
+- `links:check`: `node scripts/check-links.mjs`
+- `dom:audit`: `node scripts/dom-audit.mjs`
+- `agents:eval`: `node scripts/eval-agents.mjs`
+- `agents:report`: `node scripts/eval-agents.mjs --write`
+- `static:sync`: `node scripts/sync-static.mjs`
+- `browser:audit`: `node scripts/browser-audit.mjs`
+- `build`: `node scripts/build-pages.mjs`
+- `dist:check`: `node scripts/build-pages.mjs && node scripts/check-dist.mjs`
+- `news:update`: `node scripts/update-news.mjs`
+- `serve`: `node scripts/serve.mjs`
+- `audit:full`: `node scripts/audit-all.mjs`
+- `test`: `npm run check && npm run i18n:audit && npm run html:validate && npm run dom:audit && npm run agents:eval && npm run browser:audit`
+
+## Verificación mínima
+
+- Tests del stack en verde.
+- Build reproducible.
+- `gitleaks detect --source . --redact` limpio.
