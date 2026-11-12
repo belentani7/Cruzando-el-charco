@@ -120,3 +120,7 @@ vive en el nodo central:
 | secure-t | Ciberseguridad e IA | https://github.com/belentani7/secure-t |
 
 **PT > ES > EN > CA.** Gratuito, accesible (WCAG) y conectado.
+
+
+## Producto
+Véase `plataforma/OFERTA.md`, `plataforma/precios.json`, `plataforma/ONEPAGER.md`.
